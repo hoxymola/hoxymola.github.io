@@ -29,6 +29,9 @@ url: ""
 github:
   username: hoxymola # change to your GitHub username
 
+steam:
+  profile: 76561198843102917 # change to your Steam profile
+
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
