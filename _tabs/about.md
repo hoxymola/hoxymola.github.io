@@ -4,9 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> 어쩌구 저쩌구
-{: .prompt-tip }
-
 ### 좋아해요 🙂
 🐶 강쥐\
 🎮 게임\
