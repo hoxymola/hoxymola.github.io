@@ -26,7 +26,6 @@ permalink: /feed.xml
   <entry>
     <title>{{ post.title }}</title>
     <link href="{{ post_absolute_url }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
-    <published>{{ post.date | date_to_xmlschema }}</published>
     <id>{{ post_absolute_url }}</id>
     <content type="text/html" src="{{ post_absolute_url }}" />
     <author>
