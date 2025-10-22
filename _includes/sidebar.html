@@ -55,12 +55,12 @@
       {%- assign url = null -%}
 
       {% case entry.type %}
-        {% when 'github' %}
-          {%- unless site.github.username -%}
+        {% when 'boj' %}
+          {%- unless site.boj.username -%}
             {%- continue -%}
           {%- endunless -%}
           {%- capture url -%}
-            https://github.com/{{ site.github.username }}
+            https://acmicpc.net/user/{{ site.boj.username }}
           {%- endcapture -%}
         {% when 'steam' %}
           {%- unless site.steam.profile -%}
@@ -69,13 +69,12 @@
           {%- capture url -%}
             https://steamcommunity.com/profiles/{{ site.steam.profile }}
           {%- endcapture -%}
-        {% when 'email' %}
-          {%- unless site.social.email -%}
+        {% when 'github' %}
+          {%- unless site.github.username -%}
             {%- continue -%}
           {%- endunless -%}
-          {%- assign email = site.social.email | split: '@' -%}
           {%- capture url -%}
-            javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
+            https://github.com/{{ site.github.username }}
           {%- endcapture -%}
         {% when 'rss' %}
           {% assign url = '/feed.xml' | relative_url %}

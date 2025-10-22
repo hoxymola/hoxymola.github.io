@@ -25,11 +25,14 @@ description: >- # used by seo meta and the atom feed
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: 'https://hoxymola.github.io'
 
-github:
-  username: hoxymola # change to your GitHub username
+boj:
+  username: hoxymola
 
 steam:
-  profile: 76561198843102917 # change to your Steam profile
+  profile: 76561198843102917
+
+github:
+  username: hoxymola
 
 social:
   # Change to your full name.
