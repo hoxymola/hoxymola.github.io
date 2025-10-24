@@ -9,15 +9,27 @@ mermaid: true
 
 <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
 
-  <div>
-    <pre class="mermaid">
-%%{init: {"themeVariables": {"primaryColor": rgb(36, 156, 229); "secondaryColor": "#dddfe0"; "pieOuterStrokeWidth": 0'; "pieStrokeWidth": 0; "pieLegendTextSize": 0; "pieSectionTextSize": 0; "pieTitleTextSize": 0}, "themeCSS": ".pieCircle { transform: scale(0.4); transform-origin: center; }"}}%%
+<div>
+  <pre class="mermaid">
+%%{init: {
+  "themeVariables": {
+    "primaryColor": "rgb(36, 156, 229)",
+    "secondaryColor": "#dddfe0",
+    "pieOuterStrokeWidth": 0,
+    "pieStrokeWidth": 0,
+    "pieLegendTextSize": 0,
+    "pieSectionTextSize": 0,
+    "pieTitleTextSize": 0
+  },
+  "themeCSS": ".pieCircle { transform: scale(0.4); transform-origin: center; }"
+}}%%
 pie showData
     title class 1
     "solved": 16
     "unsolved": 0
-    </pre>
-  </div>
+  </pre>
+</div>
+
 
   <div>
     <pre class="mermaid">
