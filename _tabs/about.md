@@ -20,7 +20,7 @@ order: 4
 🚶 뚜벅뚜벅\
 🏖️ 여름
 
----
+### 여기까지 했어요 😎
 
 <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
 
