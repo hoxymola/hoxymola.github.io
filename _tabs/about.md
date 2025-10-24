@@ -29,7 +29,7 @@ order: 4
     <svg width="80" height="80" viewBox="0 0 36 36">
       <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
       <circle cx="18" cy="18" r="16" fill="none" stroke="#249ce5" stroke-width="4"
-        stroke-dasharray="100,100" stroke-dashoffset="25" transform="rotate(-90 18 18)" />
+        stroke-dasharray="500" stroke-dashoffset="400" transform="rotate(-90 18 18)" />
     </svg>
     <div style="font-size: 14px;">CLASS 1</div>
   </div>
@@ -39,7 +39,7 @@ order: 4
     <svg width="80" height="80" viewBox="0 0 36 36">
       <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
       <circle cx="18" cy="18" r="16" fill="none" stroke="#20c5df" stroke-width="4"
-        stroke-dasharray="80,100" stroke-dashoffset="25" transform="rotate(-90 18 18)" />
+        stroke-dasharray="500" stroke-dashoffset="412.5" transform="rotate(-90 18 18)" />
     </svg>
     <div style="font-size: 14px;">CLASS 2</div>
   </div>
@@ -49,7 +49,7 @@ order: 4
     <svg width="80" height="80" viewBox="0 0 36 36">
       <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
       <circle cx="18" cy="18" r="16" fill="none" stroke="#1bdf8b" stroke-width="4"
-        stroke-dasharray="60,100" stroke-dashoffset="25" transform="rotate(-90 18 18)" />
+        stroke-dasharray="500" stroke-dashoffset="430" transform="rotate(-90 18 18)" />
     </svg>
     <div style="font-size: 14px;">CLASS 3</div>
   </div>
@@ -59,7 +59,7 @@ order: 4
     <svg width="80" height="80" viewBox="0 0 36 36">
       <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
       <circle cx="18" cy="18" r="16" fill="none" stroke="#2bd521" stroke-width="4"
-        stroke-dasharray="40,100" stroke-dashoffset="25" transform="rotate(-90 18 18)" />
+        stroke-dasharray="500" stroke-dashoffset="450" transform="rotate(-90 18 18)" />
     </svg>
     <div style="font-size: 14px;">CLASS 4</div>
   </div>
@@ -69,7 +69,7 @@ order: 4
     <svg width="80" height="80" viewBox="0 0 36 36">
       <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
       <circle cx="18" cy="18" r="16" fill="none" stroke="#b0db15" stroke-width="4"
-        stroke-dasharray="30,100" stroke-dashoffset="25" transform="rotate(-90 18 18)" />
+        stroke-dasharray="500" stroke-dashoffset="460" transform="rotate(-90 18 18)" />
     </svg>
     <div style="font-size: 14px;">CLASS 5</div>
   </div>
@@ -79,7 +79,7 @@ order: 4
     <svg width="80" height="80" viewBox="0 0 36 36">
       <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
       <circle cx="18" cy="18" r="16" fill="none" stroke="#ebca0f" stroke-width="4"
-        stroke-dasharray="10,100" stroke-dashoffset="25" transform="rotate(-90 18 18)" />
+        stroke-dasharray="500" stroke-dashoffset="470" transform="rotate(-90 18 18)" />
     </svg>
     <div style="font-size: 14px;">CLASS 6</div>
   </div>
@@ -89,7 +89,7 @@ order: 4
     <svg width="80" height="80" viewBox="0 0 36 36">
       <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
       <circle cx="18" cy="18" r="16" fill="none" stroke="#f3b312" stroke-width="4"
-        stroke-dasharray="5,100" stroke-dashoffset="25" transform="rotate(-90 18 18)" />
+        stroke-dasharray="500" stroke-dashoffset="480" transform="rotate(-90 18 18)" />
     </svg>
     <div style="font-size: 14px;">CLASS 7</div>
   </div>
