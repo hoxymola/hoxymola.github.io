@@ -7,16 +7,15 @@ tags: [kotlin, 수학, 구현, 사칙연산]
 mermaid: true
 ---
 
-<div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
+<div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
 
   <div>
     <pre class="mermaid">
-%%{init: {"themeVariables": {"pieLegendTextSize": 0}, "themeCSS": ".pieCircle { transform: scale(0.8); transform-origin: center; }"}}%%
+%%{init: {"themeVariables": {"primaryColor": rgb(36, 156, 229); "secondaryColor": "#dddfe0"; "pieOuterStrokeWidth": 0'; "pieStrokeWidth": 0; "pieLegendTextSize": 0; "pieSectionTextSize": 0; "pieTitleTextSize": 0}, "themeCSS": ".pieCircle { transform: scale(0.4); transform-origin: center; }"}}%%
 pie showData
-    title Language Usage
-    "Kotlin": 45
-    "Java": 35
-    "Python": 20
+    title class 1
+    "solved": 16
+    "unsolved": 0
     </pre>
   </div>
 
