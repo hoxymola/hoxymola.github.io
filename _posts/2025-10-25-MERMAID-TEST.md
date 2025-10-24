@@ -1,9 +1,10 @@
 ---
 title: >-
-  [백준/코틀린] 1008번: A/B
+  [백준/코틀린] 테스트
 description: 브론즈 5
 categories: [백준, CLASS 1]
 tags: [kotlin, 수학, 구현, 사칙연산]
+mermaid: true
 ---
 
 <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
