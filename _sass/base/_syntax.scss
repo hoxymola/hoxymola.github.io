@@ -138,9 +138,9 @@ div[class^='language-'] {
         border-radius: 50%;
         background-color: #EB6150;
         box-shadow: (v.$code-dot-size + v.$code-dot-gap) 0 0
-            #F3B63B,
-          (v.$code-dot-size + v.$code-dot-gap) * 2 0 0
-            #54BB44;
+        #F3B63B,
+        (v.$code-dot-size + v.$code-dot-gap) * 2 0 0
+        #54BB44;
       }
 
       span {
