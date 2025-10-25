@@ -29,24 +29,26 @@ order: 4
     {% assign solved = solved_list[i] | plus: 0 %}
     {% assign total = total_list[i] | plus: 0 %}
     {% assign percent = solved | times: 100 | divided_by: total %}
-    <a href="/categories/class-{{ classes[i] }}">
-      <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
-        <svg viewBox="0 0 36 36" class="circular-chart">
-          <path class="circle-bg"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
-          <path class="circle"
-                stroke-dasharray="{{ percent | round: 1 }}, 100"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
-        </svg>
-        <div class="chart-number percentage">{{ percent | round: 1 }}%</div>
-        <div class="chart-number ratio">{{ solved }}/{{ total }}</div>
-        <div class="chart-title">CLASS {{ classes[i] }}</div>
-      </div>
-    </a>
+    <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+      <svg viewBox="0 0 36 36" class="circular-chart">
+        <path class="circle-bg"
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <path class="circle"
+              stroke-dasharray="{{ percent | round: 1 }}, 100"
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <text x="18" y="18" class="percentage">
+          {{ percent | round: 1 }}%
+        </text>
+        <text x="18" y="18" class="ratio">
+          {{ solved }}/{{ total }}
+        </text>
+      </svg>
+      <div class="chart-title">CLASS {{ classes[i] }}</div>
+    </div>
   {% endfor %}
 </div>
 
@@ -63,7 +65,6 @@ order: 4
   text-align: center;
   width: 80px;
   position: relative;
-  cursor: pointer;
 }
 
 .circular-chart {
@@ -118,15 +119,12 @@ order: 4
   to { stroke-dasharray: var(--percent), 100; }
 }
 
-.chart-number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.percentage,
+.ratio {
   font-size: 6px;
+  text-anchor: middle;
+  dominant-baseline: middle;
   font-weight: bold;
-  text-align: center;
-  color: var(--text-color);
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
