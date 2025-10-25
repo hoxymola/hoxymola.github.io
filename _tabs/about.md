@@ -69,11 +69,17 @@ order: 4
   text-align: center;
   width: 80px;
   position: relative;
-  transition: transform 0.3s ease;
 }
 
 .chart-item:hover {
-  transform: scale(1.15);
+  animation: bounceScale 0.4s forwards;
+}
+
+@keyframes bounceScale {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  70%  { transform: scale(1.08); }
+  100% { transform: scale(1.12); }
 }
 
 .circular-chart {
