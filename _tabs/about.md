@@ -73,6 +73,7 @@ order: 4
 
 .chart-item:hover {
   animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
+  animation-fill-mode: forwards;
 }
 
 @keyframes bounceScale {
@@ -103,6 +104,7 @@ order: 4
   stroke-linecap: round;
   stroke-dasharray: 0 100;
   animation: fillCircle 1.6s ease forwards;
+  animation-fill-mode: forwards;
   transition: stroke 0.3s ease;
 }
 
