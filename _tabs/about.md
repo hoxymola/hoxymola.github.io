@@ -25,7 +25,7 @@ order: 4
 {% assign classes =
 "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list =
-"16,22,35,32,25,12,2" | split: "," %}
+"16,22,7,0,0,0,0" | split: "," %}
 {% assign total_list =
 "16,22,40,47,48,48,48" | split: "," %}
 {% assign colors =
