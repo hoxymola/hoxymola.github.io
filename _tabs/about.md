@@ -71,18 +71,17 @@ order: 4
   text-align: center;
   width: 90px;
   position: relative;
-  transition: transform 0.3s ease;
 }
 
-.chart-item:hover {
+.chart-item:hover .circular-chart {
   transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
 .circular-chart {
   display: block;
   margin: auto;
   max-width: 90px;
-  transform: rotate(-90deg);
 }
 
 .circle-bg {
@@ -129,32 +128,5 @@ order: 4
   margin-top: 4px;
   font-size: 13px;
   font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .chart-item {
-    width: 70px;
-  }
-  .circular-chart {
-    max-width: 70px;
-  }
-  .chart-title {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .chart-container {
-    gap: 12px;
-  }
-  .chart-item {
-    width: 60px;
-  }
-  .circular-chart {
-    max-width: 60px;
-  }
-  .chart-title {
-    font-size: 11px;
-  }
 }
 </style>
