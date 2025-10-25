@@ -69,6 +69,11 @@ order: 4
   text-align: center;
   width: 80px;
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+.chart-item:hover {
+  transform: scale(1.15);
 }
 
 .circular-chart {
