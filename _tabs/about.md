@@ -67,15 +67,21 @@ order: 4
 
 .chart-item {
   text-align: center;
-  flex: 1 1 calc(100% / 4 - 20px); /* 최대 4개씩 한 줄 */
-  max-width: 80px;
+  width: 80px;
   position: relative;
-  transition: transform 0.4s cubic-bezier(.28,.84,.42,1.2), box-shadow 0.4s ease;
 }
 
 .chart-item:hover {
-  transform: scale(1.12);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
+}
+
+@keyframes bounceScale {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.15); }
+  55%  { transform: scale(1.10); }
+  70%  { transform: scale(1.13); }
+  85%  { transform: scale(1.11); }
+  100% { transform: scale(1.12); }
 }
 
 .circular-chart {
@@ -135,20 +141,17 @@ order: 4
   margin-top: 4px;
   font-size: 14px;
   font-weight: bold;
-  transition: transform 0.3s ease;
-}
-
-@media (max-width: 1024px) {
-  .chart-item { flex: 1 1 calc(100% / 3 - 16px); max-width: 70px; } /* 3개씩 한 줄 */
 }
 
 @media (max-width: 768px) {
-  .chart-item { flex: 1 1 calc(100% / 3 - 12px); max-width: 70px; }
+  .chart-item { width: 70px; }
+  .circular-chart { max-width: 70px; }
   .chart-title { font-size: 12px; }
 }
 
 @media (max-width: 480px) {
-  .chart-item { flex: 1 1 calc(100% / 2 - 10px); max-width: 60px; }
+  .chart-container { gap: 12px; }
+  .chart-item { width: 60px; }
   .circular-chart { max-width: 60px; }
   .chart-title { font-size: 11px; }
 }
