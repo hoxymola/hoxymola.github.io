@@ -22,76 +22,98 @@ order: 4
 
 ### 여기까지 했어요 😎
 
-<div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+{% assign classes =
+"1,2,3,4,5,6,7" | split: "," %}
+{% assign solved_list =
+"16,20,18,14,12,10,8" | split: "," %}
+{% assign total_list =
+"20,25,25,20,15,12,10" | split: "," %}
+{% assign colors =
+"#4CC790,#FFBB33,#FF4444,#33B5E5,#AA66CC,#99CC00,#2BBBAD" | split: "," %}
 
-  <!-- CLASS 1 -->
-  <div style="text-align: center;">
-    <svg width="80" height="80" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#249ce5" stroke-width="4"
-        stroke-dasharray="500" stroke-dashoffset="400" transform="rotate(-90 18 18)" />
-    </svg>
-    <div style="font-size: 14px;">CLASS 1</div>
-  </div>
-
-  <!-- CLASS 2 -->
-  <div style="text-align: center;">
-    <svg width="80" height="80" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#20c5df" stroke-width="4"
-        stroke-dasharray="500" stroke-dashoffset="412.5" transform="rotate(-90 18 18)" />
-    </svg>
-    <div style="font-size: 14px;">CLASS 2</div>
-  </div>
-
-  <!-- CLASS 3 -->
-  <div style="text-align: center;">
-    <svg width="80" height="80" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#1bdf8b" stroke-width="4"
-        stroke-dasharray="500" stroke-dashoffset="430" transform="rotate(-90 18 18)" />
-    </svg>
-    <div style="font-size: 14px;">CLASS 3</div>
-  </div>
-
-  <!-- CLASS 4 -->
-  <div style="text-align: center;">
-    <svg width="80" height="80" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#2bd521" stroke-width="4"
-        stroke-dasharray="500" stroke-dashoffset="450" transform="rotate(-90 18 18)" />
-    </svg>
-    <div style="font-size: 14px;">CLASS 4</div>
-  </div>
-
-  <!-- CLASS 5 -->
-  <div style="text-align: center;">
-    <svg width="80" height="80" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#b0db15" stroke-width="4"
-        stroke-dasharray="500" stroke-dashoffset="460" transform="rotate(-90 18 18)" />
-    </svg>
-    <div style="font-size: 14px;">CLASS 5</div>
-  </div>
-
-  <!-- CLASS 6 -->
-  <div style="text-align: center;">
-    <svg width="80" height="80" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#ebca0f" stroke-width="4"
-        stroke-dasharray="500" stroke-dashoffset="470" transform="rotate(-90 18 18)" />
-    </svg>
-    <div style="font-size: 14px;">CLASS 6</div>
-  </div>
-
-  <!-- CLASS 7 -->
-  <div style="text-align: center;">
-    <svg width="80" height="80" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#dddfe0" stroke-width="4" />
-      <circle cx="18" cy="18" r="16" fill="none" stroke="#f3b312" stroke-width="4"
-        stroke-dasharray="500" stroke-dashoffset="480" transform="rotate(-90 18 18)" />
-    </svg>
-    <div style="font-size: 14px;">CLASS 7</div>
-  </div>
-
+<div class="chart-container">
+  {% for i in (0..6) %}
+    {% assign solved = solved_list[i] | plus: 0 %}
+    {% assign total = total_list[i] | plus: 0 %}
+    {% assign percent = solved | times: 100 | divided_by: total %}
+    <div class="chart-item" style="--chart-color: {{ colors[i] }}">
+      <svg viewBox="0 0 36 36" class="circular-chart">
+        <path class="circle-bg"
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <path class="circle"
+              stroke-dasharray="{{ percent }}, 100"
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <text x="18" y="20.35" class="percentage">
+          {{ percent | round: 1 }}%
+        </text>
+        <text x="18" y="20.35" class="ratio">
+          {{ solved }}/{{ total }}
+        </text>
+      </svg>
+      <div class="chart-title">class {{ classes[i] }}</div>
+    </div>
+  {% endfor %}
 </div>
+
+<style>
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+.chart-item {
+  text-align: center;
+  width: 120px;
+  position: relative;
+}
+.circular-chart {
+  display: block;
+  margin: auto;
+  max-width: 120px;
+  transform: rotate(-90deg);
+}
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3;
+}
+.circle {
+  fill: none;
+  stroke: var(--chart-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s ease;
+}
+.percentage,
+.ratio {
+  fill: #333;
+  font-size: 6px;
+  text-anchor: middle;
+  transform: rotate(90deg);
+  transform-origin: center;
+  dominant-baseline: middle;
+  font-weight: bold;
+  pointer-events: none;
+}
+.ratio {
+  opacity: 0;
+}
+.chart-item:hover .percentage {
+  opacity: 0;
+}
+.chart-item:hover .ratio {
+  opacity: 1;
+}
+.chart-title {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+</style>
