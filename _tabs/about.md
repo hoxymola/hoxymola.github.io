@@ -4,25 +4,23 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-### 좋아해요 🙂
+## 좋아해요 🙂
 🐶 강쥐\
 🎮 게임\
 🍗🍕🍔 치킨피자햄버거\
 ☔️ 비\
 😴 드르렁\
-☃️ 겨울\
-<br>
+☃️ 겨울
 
-### 싫어해요 🙃
+## 싫어해요 🙃
 🦟 벌레\
 🧑‍💻 일\
 🫘🍆🍄‍🟫 콩가지버섯\
 ☀️ 햇빛\
 🚶 뚜벅뚜벅\
-🏖️ 여름\
-<br>
+🏖️ 여름
 
-### 여기까지 했어요 😎
+## 여기까지 했어요 😎
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,7,0,0,0,0" | split: "," %}
@@ -83,6 +81,18 @@ order: 4
   animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
 }
 
+.circular-chart:hover .circle {
+  stroke: var(--chart-hover-color);
+}
+
+.circular-chart:hover .percentage {
+  opacity: 0;
+}
+
+.circular-chart:hover .ratio {
+  opacity: 1;
+}
+
 @keyframes bounceScale {
   0%   { transform: scale(1); }
   40%  { transform: scale(1.15); }
@@ -108,10 +118,6 @@ order: 4
   transition: stroke 0.3s ease;
 }
 
-.chart-item:hover .circle {
-  stroke: var(--chart-hover-color);
-}
-
 @keyframes fillCircle {
   from { stroke-dasharray: 0, 100; }
   to { stroke-dasharray: var(--percent), 100; }
@@ -131,30 +137,10 @@ order: 4
   opacity: 0;
 }
 
-.chart-item:hover .percentage {
-  opacity: 0;
-}
-
-.chart-item:hover .ratio {
-  opacity: 1;
-}
-
 .chart-title {
   margin-top: 4px;
   font-size: 14px;
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .chart-item { width: 70px; }
-  .circular-chart { max-width: 70px; }
-  .chart-title { font-size: 12px; }
-}
-
-@media (max-width: 480px) {
-  .chart-container { gap: 12px; }
-  .chart-item { width: 60px; }
-  .circular-chart { max-width: 60px; }
-  .chart-title { font-size: 11px; }
-}
 </style>
