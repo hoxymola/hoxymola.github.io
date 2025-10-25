@@ -127,6 +127,7 @@ order: 4
   font-weight: bold;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  color: var(--text-color);
 }
 
 .ratio {
