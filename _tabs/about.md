@@ -71,8 +71,6 @@ order: 4
   display: block;
   margin: auto;
   max-width: 80px;
-  transform: scale(1);
-  transition: transform 0.4s cubic-bezier(.28,.84,.42,1.2);
 }
 
 .circular-chart:hover {
