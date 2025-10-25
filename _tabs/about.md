@@ -76,8 +76,6 @@ order: 4
   display: block;
   margin: auto;
   max-width: 80px;
-  background-color: var(--chart-color);
-  backdrop-filter: brightness(0.3);
 }
 .circle-bg {
   fill: none;
