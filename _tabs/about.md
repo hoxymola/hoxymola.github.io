@@ -76,6 +76,8 @@ order: 4
   display: block;
   margin: auto;
   max-width: 80px;
+  background-color: var(--chart-color);
+  backdrop-filter: brightness(0.3);
 }
 .circle-bg {
   fill: none;
@@ -91,11 +93,9 @@ order: 4
 }
 .percentage,
 .ratio {
-  fill: #333;
   font-size: 6px;
   text-anchor: middle;
   transform-origin: center;
-  dominant-baseline: middle;
   font-weight: bold;
   pointer-events: none;
 }
@@ -112,6 +112,5 @@ order: 4
   margin-top: 4px;
   font-size: 14px;
   font-weight: bold;
-  color: #555;
 }
 </style>
