@@ -40,12 +40,8 @@ order: 4
               d="M18 2.0845
                  a 15.9155 15.9155 0 0 1 0 31.831
                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
-        <text x="18" y="18" class="percentage">
-          {{ percent | round: 1 }}%
-        </text>
-        <text x="18" y="18" class="ratio">
-          {{ solved }}/{{ total }}
-        </text>
+      <div class="chart-number percentage">{{ percent | round: 1 }}%</div>
+      <div class="chart-number ratio">{{ solved }}/{{ total }}</div>
       </svg>
       <div class="chart-title">CLASS {{ classes[i] }}</div>
     </div>
@@ -121,10 +117,14 @@ order: 4
 
 .percentage,
 .ratio {
+.chart-number {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 6px;
-  text-anchor: middle;
-  dominant-baseline: middle;
   font-weight: bold;
+  text-align: center;
+  color: var(--text-color);
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
