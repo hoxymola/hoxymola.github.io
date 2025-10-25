@@ -71,22 +71,12 @@ order: 4
   display: block;
   margin: auto;
   max-width: 80px;
+  transition: box-shadow 0.3s ease;
 }
 
-.circular-chart:hover {
+.chart-item:hover .circular-chart {
   animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
-}
-
-.circular-chart:hover .circle {
-  stroke: var(--chart-hover-color);
-}
-
-.circular-chart:hover .percentage {
-  opacity: 0;
-}
-
-.circular-chart:hover .ratio {
-  opacity: 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 @keyframes bounceScale {
@@ -114,6 +104,10 @@ order: 4
   transition: stroke 0.3s ease;
 }
 
+.chart-item:hover .circle {
+  stroke: var(--chart-hover-color);
+}
+
 @keyframes fillCircle {
   from { stroke-dasharray: 0, 100; }
   to { stroke-dasharray: var(--percent), 100; }
@@ -131,6 +125,14 @@ order: 4
 
 .ratio {
   opacity: 0;
+}
+
+.chart-item:hover .percentage {
+  opacity: 0;
+}
+
+.chart-item:hover .ratio {
+  opacity: 1;
 }
 
 .chart-title {
