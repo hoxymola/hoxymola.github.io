@@ -69,28 +69,25 @@ order: 4
   text-align: center;
   width: 80px;
   position: relative;
-  transition: transform 0.3s ease;
 }
 
 .chart-item:hover {
   animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 @keyframes bounceScale {
   0%   { transform: scale(1); }
-  40%  { transform: scale(1.18); }
-  55%  { transform: scale(1.12); }
-  70%  { transform: scale(1.15); }
-  85%  { transform: scale(1.13); }
-  100% { transform: scale(1.14); }
+  40%  { transform: scale(1.15); }
+  55%  { transform: scale(1.10); }
+  70%  { transform: scale(1.13); }
+  85%  { transform: scale(1.11); }
+  100% { transform: scale(1.12); }
 }
 
 .circular-chart {
   display: block;
   margin: auto;
   max-width: 80px;
-  transition: transform 0.3s ease;
 }
 
 .circle-bg {
@@ -144,7 +141,6 @@ order: 4
   margin-top: 4px;
   font-size: 14px;
   font-weight: bold;
-  transition: transform 0.3s ease;
 }
 
 @media (max-width: 768px) {
