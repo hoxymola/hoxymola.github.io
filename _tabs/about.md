@@ -139,17 +139,15 @@ order: 4
   font-weight: bold;
 }
 
-@media (max-width: 1024px) {
-  .chart-item { flex: 1 1 28%; max-width: 28%; } /* 3개 한 줄 */
-}
 @media (max-width: 768px) {
-  .chart-item { flex: 1 1 45%; max-width: 45%; } /* 2개 한 줄 */
+  .chart-item { width: 70px; }
   .circular-chart { max-width: 70px; }
   .chart-title { font-size: 12px; }
 }
+
 @media (max-width: 480px) {
   .chart-container { gap: 12px; }
-  .chart-item { flex: 1 1 45%; max-width: 45%; } /* 2개 한 줄 */
+  .chart-item { width: 60px; }
   .circular-chart { max-width: 60px; }
   .chart-title { font-size: 11px; }
 }
