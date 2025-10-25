@@ -36,14 +36,13 @@ order: 4
     {% assign solved = solved_list[i] | plus: 0 %}
     {% assign total = total_list[i] | plus: 0 %}
     {% assign percent = solved | times: 100 | divided_by: total %}
-    <div class="chart-item" style="--chart-color: {{ colors[i] }}">
+    <div class="chart-item" style="--chart-color: {{ colors[i] }};--percent: {{ percent }}">
       <svg viewBox="0 0 36 36" class="circular-chart">
         <path class="circle-bg"
               d="M18 2.0845
                  a 15.9155 15.9155 0 0 1 0 31.831
                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
         <path class="circle"
-              stroke-dasharray="{{ percent }}, 100"
               d="M18 2.0845
                  a 15.9155 15.9155 0 0 1 0 31.831
                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -67,28 +66,46 @@ order: 4
   gap: 20px;
   margin-top: 30px;
 }
+
 .chart-item {
   text-align: center;
-  width: 80px;
+  width: 90px;
   position: relative;
+  transition: transform 0.3s ease;
 }
+
+.chart-item:hover {
+  transform: scale(1.05);
+}
+
 .circular-chart {
   display: block;
   margin: auto;
-  max-width: 80px;
+  max-width: 90px;
+  transform: rotate(-90deg);
 }
+
 .circle-bg {
   fill: none;
   stroke: #dddfe0;
-  stroke-width: 4;
+  stroke-width: 3.5;
 }
+
 .circle {
   fill: none;
   stroke: var(--chart-color);
-  stroke-width: 4;
+  stroke-width: 3.5;
   stroke-linecap: round;
-  transition: stroke-dasharray 0.6s ease;
+  stroke-dasharray: 0 100;
+  animation: fillCircle 1.6s ease forwards;
 }
+
+@keyframes fillCircle {
+  to {
+    stroke-dasharray: var(--percent), 100;
+  }
+}
+
 .percentage,
 .ratio {
   font-size: 6px;
@@ -97,9 +114,11 @@ order: 4
   font-weight: bold;
   pointer-events: none;
 }
+
 .ratio {
   opacity: 0;
 }
+
 .chart-item:hover .percentage {
   opacity: 0;
 }
@@ -108,7 +127,34 @@ order: 4
 }
 .chart-title {
   margin-top: 4px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .chart-item {
+    width: 70px;
+  }
+  .circular-chart {
+    max-width: 70px;
+  }
+  .chart-title {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-container {
+    gap: 12px;
+  }
+  .chart-item {
+    width: 60px;
+  }
+  .circular-chart {
+    max-width: 60px;
+  }
+  .chart-title {
+    font-size: 11px;
+  }
 }
 </style>
