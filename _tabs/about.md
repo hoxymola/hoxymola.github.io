@@ -26,20 +26,21 @@ order: 4
 {% assign solved_list = "16,22,7,0,0,0,0" | split: "," %}
 {% assign total_list = "16,22,40,47,48,48,48" | split: "," %}
 {% assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," %}
+{% assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," %}
 
 <div class="chart-container">
   {% for i in (0..6) %}
     {% assign solved = solved_list[i] | plus: 0 %}
     {% assign total = total_list[i] | plus: 0 %}
     {% assign percent = solved | times: 100 | divided_by: total %}
-    <div class="chart-item" style="--chart-color: {{ colors[i] }};--percent: {{ percent }}">
+    <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
       <svg viewBox="0 0 36 36" class="circular-chart">
         <path class="circle-bg"
               d="M18 2.0845
                  a 15.9155 15.9155 0 0 1 0 31.831
                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
         <path class="circle"
-              stroke-dasharray="{{ percent | times: 100 | divided_by: 100 }}, 100"
+              stroke-dasharray="{{ percent | round: 1 }}, 100"
               d="M18 2.0845
                  a 15.9155 15.9155 0 0 1 0 31.831
                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -89,6 +90,11 @@ order: 4
   stroke-linecap: round;
   stroke-dasharray: 0 100;
   animation: fillCircle 1.6s ease forwards;
+  transition: stroke 0.3s ease;
+}
+
+.chart-item:hover .circle {
+  stroke: var(--chart-hover-color);
 }
 
 @keyframes fillCircle {
