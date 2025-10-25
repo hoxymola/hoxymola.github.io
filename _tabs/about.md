@@ -71,23 +71,15 @@ order: 4
   position: relative;
 }
 
-.chart-item:hover {
-  animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
-}
-
-@keyframes bounceScale {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(1.15); }
-  55%  { transform: scale(1.10); }
-  70%  { transform: scale(1.13); }
-  85%  { transform: scale(1.11); }
-  100% { transform: scale(1.12); }
-}
-
 .circular-chart {
   display: block;
   margin: auto;
   max-width: 80px;
+  transition: transform 0.3s cubic-bezier(.28,.84,.42,1.2);
+}
+
+.chart-item:hover .circular-chart {
+  transform: scale(1.12);
 }
 
 .circle-bg {
