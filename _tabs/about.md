@@ -25,11 +25,11 @@ order: 4
 {% assign classes =
 "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list =
-"16,20,18,14,12,10,8" | split: "," %}
+"16,22,35,32,25,12,2" | split: "," %}
 {% assign total_list =
-"20,25,25,20,15,12,10" | split: "," %}
+"16,22,40,47,48,48,48" | split: "," %}
 {% assign colors =
-"#4CC790,#FFBB33,#FF4444,#33B5E5,#AA66CC,#99CC00,#2BBBAD" | split: "," %}
+"#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," %}
 
 <div class="chart-container">
   {% for i in (0..6) %}
@@ -54,7 +54,7 @@ order: 4
           {{ solved }}/{{ total }}
         </text>
       </svg>
-      <div class="chart-title">class {{ classes[i] }}</div>
+      <div class="chart-title">CLASS {{ classes[i] }}</div>
     </div>
   {% endfor %}
 </div>
@@ -64,29 +64,28 @@ order: 4
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 18px;
-  margin-top: 10px;
+  gap: 20px;
+  margin-top: 30px;
 }
 .chart-item {
   text-align: center;
-  width: 120px;
+  width: 80px;
   position: relative;
 }
 .circular-chart {
   display: block;
   margin: auto;
-  max-width: 120px;
-  transform: rotate(-90deg);
+  max-width: 80px;
 }
 .circle-bg {
   fill: none;
-  stroke: #eee;
-  stroke-width: 3;
+  stroke: #dddfe0;
+  stroke-width: 4;
 }
 .circle {
   fill: none;
   stroke: var(--chart-color);
-  stroke-width: 3;
+  stroke-width: 4;
   stroke-linecap: round;
   transition: stroke-dasharray 0.6s ease;
 }
@@ -95,7 +94,6 @@ order: 4
   fill: #333;
   font-size: 6px;
   text-anchor: middle;
-  transform: rotate(90deg);
   transform-origin: center;
   dominant-baseline: middle;
   font-weight: bold;
@@ -113,7 +111,7 @@ order: 4
 .chart-title {
   margin-top: 4px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   color: #555;
 }
 </style>
