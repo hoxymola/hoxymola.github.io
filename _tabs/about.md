@@ -75,7 +75,7 @@ order: 4
 
 .chart-item:hover .circular-chart {
   transform: scale(1.05);
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.3s ease;
 }
 
 .circular-chart {
@@ -126,7 +126,7 @@ order: 4
 }
 .chart-title {
   margin-top: 4px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 }
 </style>
