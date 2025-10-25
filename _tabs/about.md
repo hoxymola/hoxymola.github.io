@@ -72,13 +72,15 @@ order: 4
 }
 
 .chart-item:hover {
-  animation: bounceScale 0.4s forwards;
+  animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
 }
 
 @keyframes bounceScale {
   0%   { transform: scale(1); }
-  50%  { transform: scale(1.15); }
-  70%  { transform: scale(1.08); }
+  40%  { transform: scale(1.15); }
+  55%  { transform: scale(1.10); }
+  70%  { transform: scale(1.13); }
+  85%  { transform: scale(1.11); }
   100% { transform: scale(1.12); }
 }
 
