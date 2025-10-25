@@ -5,20 +5,14 @@ order: 4
 ---
 
 ## 좋아해요 🙂
-🐶 강쥐\
-🎮 게임\
+🐶 강쥐 🎮 게임 ☔️ 비\
 🍗🍕🍔 치킨피자햄버거\
-☔️ 비\
-😴 드르렁\
-☃️ 겨울
+😴 드르렁 ☃️ 겨울
 
 ## 싫어해요 🙃
-🦟 벌레\
-🧑‍💻 일\
+🦟 벌레 🧑‍💻 일 ☀️ 햇빛\
 🫘🍆🍄‍🟫 콩가지버섯\
-☀️ 햇빛\
-🚶 뚜벅뚜벅\
-🏖️ 여름
+🚶 뚜벅뚜벅 🏖️ 여름
 
 ## 여기까지 했어요 😎
 
@@ -150,7 +144,7 @@ order: 4
 }
 
 @media (max-width: 480px) {
-  .chart-container { gap: 13px; }
+  .chart-container { gap: 12px; }
   .chart-item { width: 60px; }
   .circular-chart { max-width: 60px; }
   .chart-title { font-size: 11px; }
