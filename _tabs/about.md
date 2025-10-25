@@ -143,4 +143,16 @@ order: 4
   font-weight: bold;
 }
 
+@media (max-width: 768px) {
+  .chart-item { width: 70px; }
+  .circular-chart { max-width: 70px; }
+  .chart-title { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .chart-container { gap: 13px; }
+  .chart-item { width: 60px; }
+  .circular-chart { max-width: 60px; }
+  .chart-title { font-size: 11px; }
+}
 </style>
