@@ -29,12 +29,7 @@ order: 4
     {% assign solved = solved_list[i] | plus: 0 %}
     {% assign total = total_list[i] | plus: 0 %}
     {% assign percent = solved | times: 100 | divided_by: total %}
-    {% assign class_link = "/categories/class-" | append: classes[i] | append: "/" %}
-    <div 
-      class="chart-item{% if solved > 0 %} clickable{% endif %}" 
-      style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}"
-      {% if solved > 0 %} data-link="{{ class_link }}" {% endif %}
-    >
+    <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
       <svg viewBox="0 0 36 36" class="circular-chart">
         <path class="circle-bg"
               d="M18 2.0845
@@ -57,24 +52,6 @@ order: 4
   {% endfor %}
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".chart-item.clickable").forEach(item => {
-    item.addEventListener("click", () => {
-      const link = item.dataset.link;
-      if (!link) return;
-      
-      // 페이지 존재 여부 확인 후 이동
-      fetch(link, { method: "HEAD" })
-        .then(res => {
-          if (res.ok) window.location.href = link;
-        })
-        .catch(() => {});
-    });
-  });
-});
-</script>
-
 <style>
 .chart-container {
   display: flex;
@@ -88,10 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
   text-align: center;
   width: 80px;
   position: relative;
-}
-
-.chart-item.clickable {
-  cursor: pointer;
 }
 
 .circular-chart {
