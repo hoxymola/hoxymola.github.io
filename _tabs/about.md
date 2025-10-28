@@ -17,7 +17,6 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
-
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,10,0,0,0,0" | split: "," %}
 {% assign total_list = "16,22,40,47,48,48,48" | split: "," %}
@@ -29,12 +28,18 @@ order: 4
     {% assign solved = solved_list[i] | plus: 0 %}
     {% assign total = total_list[i] | plus: 0 %}
     {% assign percent = solved | times: 100 | divided_by: total %}
+
     {% if solved > 0 %}
-      <div class="chart-item" onclick="location.href='/categories/class-{{ classes[i] }}'"
-           style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+      <div
+        class="chart-item clickable"
+        style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}"
+        onclick="location.href='/categories/class-{{ classes[i] }}'"
+      >
     {% else %}
-      <div class="chart-item no-link"
-           style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+      <div
+        class="chart-item"
+        style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}"
+      >
     {% endif %}
         <svg viewBox="0 0 36 36" class="circular-chart">
           <path class="circle-bg"
@@ -71,16 +76,26 @@ order: 4
   text-align: center;
   width: 80px;
   position: relative;
+  transition: transform 0.15s ease;
+}
+
+.chart-item.clickable {
+  cursor: pointer;
+}
+
+.chart-item.clickable:hover .circular-chart {
+  animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
+}
+
+.chart-item.clickable:active {
+  transform: scale(0.95);
 }
 
 .circular-chart {
   display: block;
   margin: auto;
   max-width: 80px;
-}
-
-.circular-chart:hover {
-  animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
+  transition: transform 0.15s ease;
 }
 
 .circular-chart:hover .circle {
