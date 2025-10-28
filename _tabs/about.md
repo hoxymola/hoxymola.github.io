@@ -29,26 +29,32 @@ order: 4
     {% assign solved = solved_list[i] | plus: 0 %}
     {% assign total = total_list[i] | plus: 0 %}
     {% assign percent = solved | times: 100 | divided_by: total %}
-    <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
-      <svg viewBox="0 0 36 36" class="circular-chart">
-        <path class="circle-bg"
-              d="M18 2.0845
-                 a 15.9155 15.9155 0 0 1 0 31.831
-                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-        <path class="circle"
-              stroke-dasharray="{{ percent | round: 1 }}, 100"
-              d="M18 2.0845
-                 a 15.9155 15.9155 0 0 1 0 31.831
-                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-        <text x="18" y="18" class="percentage">
-          {{ percent | round: 1 }}%
-        </text>
-        <text x="18" y="18" class="ratio">
-          {{ solved }}/{{ total }}
-        </text>
-      </svg>
-      <div class="chart-title">CLASS {{ classes[i] }}</div>
-    </div>
+    {% if solved > 0 %}
+      <div class="chart-item" onclick="location.href='/categories/class-{{ classes[i] }}'"
+           style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+    {% else %}
+      <div class="chart-item no-link"
+           style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+    {% endif %}
+        <svg viewBox="0 0 36 36" class="circular-chart">
+          <path class="circle-bg"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          <path class="circle"
+                stroke-dasharray="{{ percent | round: 1 }}, 100"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          <text x="18" y="18" class="percentage">
+            {{ percent | round: 1 }}%
+          </text>
+          <text x="18" y="18" class="ratio">
+            {{ solved }}/{{ total }}
+          </text>
+        </svg>
+        <div class="chart-title">CLASS {{ classes[i] }}</div>
+      </div>
   {% endfor %}
 </div>
 
