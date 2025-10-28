@@ -33,7 +33,7 @@ order: 4
       {% if solved > 0 %}
         <svg viewBox="0 0 36 36" class="circular-chart clickable" onclick="location.href='/categories/class-{{ classes[i] }}'">
       {% else %}
-        <svg viewBox="0 0 36 36" class="circular-chart no-link">
+        <svg viewBox="0 0 36 36" class="circular-chart disabled">
       {% endif %}
 
           <path class="circle-bg"
@@ -83,15 +83,15 @@ order: 4
   animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
 }
 
-.clickable {
+.chart-item.clickable {
   cursor: pointer;
 }
 
-.clickable:active {
+.chart-item.clickable:active {
   transform: scale(0.95);
 }
 
-.no-link {
+.chart-item.disabled {
   pointer-events: none;
   cursor: default;
 }
