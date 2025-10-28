@@ -33,7 +33,7 @@ order: 4
       {% if solved > 0 %}
         <svg viewBox="0 0 36 36" class="circular-chart clickable" onclick="location.href='/categories/class-{{ classes[i] }}'">
       {% else %}
-        <svg viewBox="0 0 36 36" class="circular-chart no-link">
+        <svg viewBox="0 0 36 36" class="circular-chart">
       {% endif %}
 
           <path class="circle-bg"
@@ -89,11 +89,6 @@ order: 4
 
 .circular-chart.clickable:active {
   transform: scale(0.95);
-}
-
-.circular-chart.no-link {
-  pointer-events: none;
-  cursor: default;
 }
 
 .circular-chart:hover .circle {
