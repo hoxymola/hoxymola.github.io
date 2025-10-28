@@ -29,7 +29,14 @@ order: 4
     {% assign solved = solved_list[i] | plus: 0 %}
     {% assign total = total_list[i] | plus: 0 %}
     {% assign percent = solved | times: 100 | divided_by: total %}
-    <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+    {% assign class_link = "/categories/class-" | append: classes[i] | append: "/" %}
+    {% if solved > 0 %}
+      <a href="{{ class_link }}" class="chart-item clickable" 
+         style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}"></a>
+    {% else %}
+      <div class="chart-item" 
+           style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+    {% endif %}
       <svg viewBox="0 0 36 36" class="circular-chart">
         <path class="circle-bg"
               d="M18 2.0845
