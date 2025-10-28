@@ -32,7 +32,7 @@ order: 4
     {% assign class_link = "/categories/class-" | append: classes[i] | append: "/" %}
     {% if solved > 0 %}
       <a href="{{ class_link }}" class="chart-item clickable" 
-         style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+         style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}"></a>
     {% else %}
       <div class="chart-item" 
            style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
