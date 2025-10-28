@@ -60,16 +60,25 @@ order: 4
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".chart-item.clickable").forEach(item => {
+    let tapped = false;
+
     item.addEventListener("click", () => {
       const link = item.dataset.link;
       if (!link) return;
-      
-      // 페이지 존재 여부 확인 후 이동
-      fetch(link, { method: "HEAD" })
-        .then(res => {
-          if (res.ok) window.location.href = link;
-        })
-        .catch(() => {});
+
+      // 첫 번째 클릭 → 효과만
+      if (!tapped) {
+        tapped = true;
+        item.classList.add("tapped");
+        setTimeout(() => {
+          tapped = false;
+          item.classList.remove("tapped");
+        }, 1200); // 효과 지속시간 후 초기화
+        return;
+      }
+
+      // 두 번째 클릭 → 이동
+      window.location.href = link;
     });
   });
 });
@@ -98,21 +107,26 @@ document.addEventListener("DOMContentLoaded", () => {
   display: block;
   margin: auto;
   max-width: 80px;
+  transition: transform 0.3s ease;
 }
 
-.circular-chart:hover {
+.circular-chart:hover,
+.chart-item.tapped .circular-chart {
   animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
 }
 
-.circular-chart:hover .circle {
+.circular-chart:hover .circle,
+.chart-item.tapped .circle {
   stroke: var(--chart-hover-color);
 }
 
-.circular-chart:hover .percentage {
+.circular-chart:hover .percentage,
+.chart-item.tapped .percentage {
   opacity: 0;
 }
 
-.circular-chart:hover .ratio {
+.circular-chart:hover .ratio,
+.chart-item.tapped .ratio {
   opacity: 1;
 }
 
