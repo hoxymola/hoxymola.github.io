@@ -20,6 +20,8 @@ order: 4
 
 [![현재 진행 배지](https://static.solved.ac/class/c2g.svg){: .badge-img }](https://solved.ac/class)
 
+
+
 {%- assign classes = "1,2,3,4,5,6,7" | split: "," -%}
 {%- assign solved_list = "16,22,11,0,0,0,0" | split: "," -%}
 {%- assign total_list = "16,22,40,47,48,48,48" | split: "," -%}
