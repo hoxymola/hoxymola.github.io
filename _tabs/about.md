@@ -74,10 +74,11 @@ order: 4
   margin-top:24px;
 }
 
+.badge-box{ position: relative; z-index: 2; }
+.badge-box a{ display: inline-block; }
 .badge-box img{
-  width:180px;
-  height:auto;
-  display:block;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .charts{
@@ -87,16 +88,19 @@ order: 4
 }
 
 .chart-container{
+  --item-w: 92px;
+  --gap: 20px;
   display:flex;
-  flex-wrap: nowrap; 
-  gap:20px;
+  flex-wrap: wrap;
+  gap: var(--gap);
   justify-content: center;
   align-items:center;
 }
 
 .chart-item{
+  flex: 0 0 var(--item-w);
+  width: var(--item-w);
   text-align:center;
-  width: 92px;
   position:relative;
   padding:10px 6px;
   border-radius:12px;
@@ -184,36 +188,30 @@ order: 4
   font-weight: bold;
 }
 
+@media (min-width: 1201px){
+  .chart-container{
+    max-width: none;
+  }
+}
+
 @media (max-width: 1200px){
   .chart-container{
-    flex-wrap: wrap;     
-    justify-content: center;       
-  }
-  .chart-item{
-    flex: 0 0 calc(25% - 20px);  
-    max-width: 130px;        
+    max-width: calc((var(--item-w) * 4) + (var(--gap) * 3));
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 768px){
   .chart-container{
-    gap:16px;
-  }
-  .chart-item{
-    flex: 0 0 calc(33.333% - 16px); 
-    max-width: 120px;
-    width: auto;        
+    max-width: calc((var(--item-w) * 3) + (var(--gap) * 2));
+    gap: 16px;
   }
   .circular-chart{ max-width: 70px; }
   .chart-title{ font-size: 12px; }
 }
 
 @media (max-width: 480px){
-  .chart-container{ gap:12px; }
-  .chart-item{
-    flex: 0 0 calc(33.333% - 12px);  
-    max-width: 110px;
-  }
+  .chart-container{ gap: 12px; }
   .circular-chart{ max-width: 60px; }
   .chart-title{ font-size: 11px; }
 }
