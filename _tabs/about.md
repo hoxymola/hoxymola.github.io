@@ -17,9 +17,10 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
+
 <span class="achievement-inline">
   <a href="https://solved.ac/class" class="achievement-icon" target="_blank">
-    <img src="/assets/class/c2g.svg" alt="class 2"/>
+    <img src="https://hoxymola.github.io/assets/class/c2g.svg" alt="class 2"/>
   </a>
 </span>
 
