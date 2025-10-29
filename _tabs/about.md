@@ -2,6 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+cdn: https://hoxymola.github.io
 ---
 
 ### 좋아해요 🙂
@@ -16,10 +17,10 @@ order: 4
 🏖️ 여름 🚶 뚜벅뚜벅\
 <br>
 
-<div class="achievement-section">
-  <span class="achievement-text">여기까지 했어요 😎</span>
+### 여기까지 했어요 😎
+<div class="achievement-inline">
   <a href="https://solved.ac/class" class="achievement-icon" target="_blank">
-    <img src="https://hoxymola.github.io/assets/class/c2g.svg" alt="class 2"/>
+    <img src="/assets/class/c2g.svg" alt="class 2"/>
   </a>
 </div>
 
@@ -64,22 +65,15 @@ order: 4
 </div>
 
 <style>
-.achievement-section {
+.achievement-inline {
   display: inline-flex;
   align-items: center;
-  gap: 0.4em;
-  margin-top: 1em;
-  font-size: 1.36rem;
-}
-
-.achievement-text {
-  font-weight: bold;
-  font-size: 1.36rem;
+  margin-left: 0.5em;
 }
 
 .achievement-icon img {
-  width: 1.36rem;
-  height: 1.36rem;
+  width: 1.2em;
+  height: 1.2em;
   vertical-align: middle;
   transition: transform 0.2s ease;
 }
