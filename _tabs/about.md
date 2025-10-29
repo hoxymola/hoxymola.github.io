@@ -18,7 +18,7 @@ order: 4
 
 ### 여기까지 했어요 😎
 
-[![현재 진행 배지](/assets/class/c2g.svg){: width="180" }](https://solved.ac/class)
+[![현재 진행 배지](/assets/class/c2g.svg){: width="150" }](https://solved.ac/class)
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,11,0,0,0,0" | split: "," %}
@@ -62,9 +62,9 @@ order: 4
 
 <style>
 .chart-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(7, 80px); /* 기본: 1줄 7개 */
+  justify-content: center;  /* 항상 가운데 정렬 */
   gap: 20px;
   margin-top: 30px;
 }
@@ -157,16 +157,25 @@ order: 4
   font-weight: bold;
 }
 
+/* 2줄 (4개 + 3개)로 전환되는 구간 */
+@media (max-width: 1100px) {
+  .chart-container {
+    grid-template-columns: repeat(4, 80px); /* 첫 줄에 4개 */
+  }
+}
+
+/* 더 좁은 화면에서도 유지 — 두 번째 줄은 자동으로 3개 & 가운데 정렬 */
 @media (max-width: 768px) {
-  .chart-item { width: 70px; }
-  .circular-chart { max-width: 70px; }
-  .chart-title { font-size: 12px; }
+  .chart-container {
+    grid-template-columns: repeat(4, 70px);
+    gap: 16px;
+  }
 }
 
 @media (max-width: 480px) {
-  .chart-container { gap: 12px; }
-  .chart-item { width: 60px; }
-  .circular-chart { max-width: 60px; }
-  .chart-title { font-size: 11px; }
+  .chart-container {
+    grid-template-columns: repeat(4, 60px);
+    gap: 12px;
+  }
 }
 </style>
