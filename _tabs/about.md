@@ -17,96 +17,69 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
+
+[![현재 진행 배지](/assets/class/c2g.svg){: width="180" }](https://solved.ac/class)
+
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,11,0,0,0,0" | split: "," %}
 {% assign total_list = "16,22,40,47,48,48,48" | split: "," %}
 {% assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," %}
 {% assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," %}
 
-<div class="progress-wrap">
-  <div class="badge-box">
-    <a href="https://solved.ac/class">
-      <img src="/assets/class/c2g.svg" alt="현재 진행 배지" width="180"/>
-    </a>
-  </div>
+<div class="chart-container">
+  {% for i in (0..6) %}
+    {% assign solved = solved_list[i] | plus: 0 %}
+    {% assign total = total_list[i] | plus: 0 %}
+    {% assign percent = solved | times: 100 | divided_by: total %}
+    <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
 
-  <div class="charts">
-    <div class="chart-container">
-      {% for i in (0..6) %}
-        {% assign solved = solved_list[i] | plus: 0 %}
-        {% assign total = total_list[i] | plus: 0 %}
-        {% assign percent = solved | times: 100 | divided_by: total %}
-        <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
-          {% if solved > 0 %}
-            <svg viewBox="0 0 36 36" class="circular-chart clickable" onclick="location.href='/categories/class-{{ classes[i] }}'">
-          {% else %}
-            <svg viewBox="0 0 36 36" class="circular-chart">
-          {% endif %}
-              <path class="circle-bg"
-                    d="M18 2.0845
-                       a 15.9155 15.9155 0 0 1 0 31.831
-                       a 15.9155 15.9155 0 0 1 0 -31.831"/>
-              <path class="circle"
-                    stroke-dasharray="{{ percent | round: 1 }}, 100"
-                    d="M18 2.0845
-                       a 15.9155 15.9155 0 0 1 0 31.831
-                       a 15.9155 15.9155 0 0 1 0 -31.831"/>
-              <text x="18" y="18" class="percentage">
-                {{ percent | round: 1 }}%
-              </text>
-              <text x="18" y="18" class="ratio">
-                {{ solved }}/{{ total }}
-              </text>
-            </svg>
-          <div class="chart-title">CLASS {{ classes[i] }}</div>
-        </div>
-      {% endfor %}
+      {% if solved > 0 %}
+        <svg viewBox="0 0 36 36" class="circular-chart clickable" onclick="location.href='/categories/class-{{ classes[i] }}'">
+      {% else %}
+        <svg viewBox="0 0 36 36" class="circular-chart">
+      {% endif %}
+
+          <path class="circle-bg"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          <path class="circle"
+                stroke-dasharray="{{ percent | round: 1 }}, 100"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          <text x="18" y="18" class="percentage">
+            {{ percent | round: 1 }}%
+          </text>
+          <text x="18" y="18" class="ratio">
+            {{ solved }}/{{ total }}
+          </text>
+        </svg>
+      <div class="chart-title">CLASS {{ classes[i] }}</div>
     </div>
-  </div>
+{% endfor %}
 </div>
 
 <style>
-.progress-wrap{
-  display:flex; flex-direction:column; align-items:center;
-  gap:20px; margin-top:24px;
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
 }
 
-.badge-box{
+.chart-item {
+  text-align: center;
+  width: 80px;
   position: relative;
-  isolation: isolate;
-  z-index: 10;
-}
-.badge-box a{ display:inline-block; }
-.badge-box img{
-  width:180px; height:auto; display:block;
-  pointer-events:auto !important; cursor:pointer;
 }
 
-.charts{
-  border:1px solid var(--text-color);
-  border-radius:16px;
-  padding:16px 18px;
-  position: relative;
-  z-index: 0; 
-  overflow: visible;
-}
-
-.chart-container{
-  --item-w: 92px;
-  --gap: 20px;
-  display: grid;
-  grid-template-columns: repeat(7, var(--item-w)); /* 기본: 7개 한 줄 */
-  gap: var(--gap);
-  justify-content: center;   /* 마지막 줄 포함 항상 가운데 */
-}
-
-/* 카드 폭 고정 → 줄이 나뉘어도 간격 유지 */
-.chart-item{ width: var(--item-w); padding:10px 6px; border-radius:12px; text-align:center; }
-
-.circular-chart{ 
-  display:block; margin:auto;
-  max-width: calc(var(--item-w) - 12px);
-  transition: transform .15s ease;
+.circular-chart {
+  display: block;
+  margin: auto;
+  max-width: 80px;
+  transition: transform 0.15s ease;
 }
 
 .circular-chart:hover {
@@ -184,47 +157,16 @@ order: 4
   font-weight: bold;
 }
 
-/* 더 일찍 2줄(4+3)로 전환 — 값은 환경 따라 미세조정 가능 */
-@media (max-width: 1280px){
-  .chart-container{
-    grid-template-columns: repeat(4, var(--item-w)); /* 4열 고정 */
-  }
+@media (max-width: 768px) {
+  .chart-item { width: 70px; }
+  .circular-chart { max-width: 70px; }
+  .chart-title { font-size: 12px; }
 }
 
-/* 더 좁아져도 3열 금지 — 아이템/간격만 줄여서 계속 4열 유지 */
-@media (max-width: 900px){
-  .chart-container{ --item-w: 84px; --gap:16px; grid-template-columns: repeat(4, var(--item-w)); }
-  .circular-chart{ max-width: calc(var(--item-w) - 10px); }
-  .chart-title{ font-size: 12px; }
-}
-@media (max-width: 760px){
-  .chart-container{ --item-w: 76px; --gap:14px; grid-template-columns: repeat(4, var(--item-w)); }
-}
-@media (max-width: 640px){
-  .chart-container{ --item-w: 70px; --gap:12px; grid-template-columns: repeat(4, var(--item-w)); }
-  .circular-chart{ max-width: calc(var(--item-w) - 8px); }
-  .chart-title{ font-size: 11px; }
+@media (max-width: 480px) {
+  .chart-container { gap: 12px; }
+  .chart-item { width: 60px; }
+  .circular-chart { max-width: 60px; }
+  .chart-title { font-size: 11px; }
 }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const badgeLink = document.querySelector('.badge-box a[href="https://solved.ac/class"]');
-  const img = badgeLink?.querySelector('img');
-
-  if (!img || !badgeLink) return;
-
-  // 1) 테마가 붙인 이미지 팝업 래퍼를 발견하면 제거(unwrap)하고 다시 우리가 원하는 <a> 안에 넣기
-  const popupWrapper = img.closest('a.img-link');
-  if (popupWrapper && popupWrapper !== badgeLink) {
-    popupWrapper.replaceWith(img);      // 감싼 <a.img-link> 제거
-    badgeLink.appendChild(img);         // 원래 배지 링크로 복구
-  }
-
-  // 2) 혹시 스크립트가 다시 건드리지 않도록, 식별용 속성 부여(무해)
-  img.setAttribute('data-no-image-popup', 'true');
-
-  // 3) 클릭 시 이벤트 전파로 간섭 방지
-  badgeLink.addEventListener('click', (e) => { e.stopPropagation(); });
-});
-</script>
