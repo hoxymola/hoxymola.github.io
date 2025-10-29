@@ -62,12 +62,10 @@ order: 4
 </div>
 
 <style>
-/* ✅ 1. 아이콘 가운데 정렬 */
 .badge-wrap {
+  display: block;
   width: 120px;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  margin: 20px auto 0;
 }
 
 .chart-wrapper {
@@ -75,24 +73,22 @@ order: 4
   border-radius: 16px;
   padding: 24px 20px;
   margin-top: 24px;
-  overflow: hidden; /* ✅ 테두리 밖으로 넘침 방지 */
+  overflow: hidden;
 }
 
-/* ===== Grid로 1줄(7개) → 2줄(4+3) ===== */
 .chart-container {
   display: grid;
-  grid-template-columns: repeat(7, 80px); /* 기본 1줄 7개 */
-  justify-content: center; /* ✅ 항상 가운데 정렬 */
+  grid-template-columns: repeat(7, 80px);
+  justify-content: center;
   gap: 20px;
   margin-top: 10px;
 }
 
-/* ✅ 테두리보다 살짝 여유 있게 — 아이템이 안 짤리도록 */
 .chart-item {
   text-align: center;
   width: 80px;
   position: relative;
-  box-sizing: border-box; /* ✅ 패딩 포함해서 테두리 넘치지 않게 */
+  box-sizing: border-box;
 }
 
 .circular-chart {
