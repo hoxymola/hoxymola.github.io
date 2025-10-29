@@ -19,7 +19,7 @@ order: 4
 ### 여기까지 했어요 😎
 <div class="achievement-inline">
   <a href="https://solved.ac/class" class="achievement-icon" target="_blank">
-    <img src="https://static.solved.ac/class/c2g.svg" alt="class 2"/>
+    <img src="/assets/class/c2g.svg" alt="class 2"/>
   </a>
 </div>
 
