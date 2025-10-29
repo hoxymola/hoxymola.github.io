@@ -212,7 +212,7 @@ order: 4
 }
 
 .img-link img {
-  width: 120px;
+  width: 80px;
   height: auto;
   display: block;
   transition: transform 0.25s ease, filter 0.25s ease;
