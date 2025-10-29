@@ -64,32 +64,35 @@ order: 4
 <style>
 /* ✅ 1. 아이콘 가운데 정렬 */
 .badge-wrap {
+  width: 120px;
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-/* ✅ 2. 전체 박스에 테두리 */
 .chart-wrapper {
   border: 1px solid var(--text-color);
   border-radius: 16px;
   padding: 24px 20px;
   margin-top: 24px;
+  overflow: hidden; /* ✅ 테두리 밖으로 넘침 방지 */
 }
 
-/* ✅ 3. 1줄(7개) → 2줄(4+3)로 전환, 두 번째 줄 가운데 정렬 */
+/* ===== Grid로 1줄(7개) → 2줄(4+3) ===== */
 .chart-container {
   display: grid;
-  grid-template-columns: repeat(7, 80px);
-  justify-content: center;   /* 항상 가운데 */
+  grid-template-columns: repeat(7, 80px); /* 기본 1줄 7개 */
+  justify-content: center; /* ✅ 항상 가운데 정렬 */
   gap: 20px;
   margin-top: 10px;
 }
 
+/* ✅ 테두리보다 살짝 여유 있게 — 아이템이 안 짤리도록 */
 .chart-item {
   text-align: center;
   width: 80px;
   position: relative;
+  box-sizing: border-box; /* ✅ 패딩 포함해서 테두리 넘치지 않게 */
 }
 
 .circular-chart {
@@ -174,25 +177,20 @@ order: 4
   font-weight: bold;
 }
 
-/* ✅ 반응형 - 2줄(4 + 3) */
-@media (max-width: 1150px) {
+/* ✅ 화면이 줄어들면 2줄(4+3)로 전환 */
+@media (max-width: 1200px) {
   .chart-container {
-    grid-template-columns: repeat(4, 80px); /* 첫 줄 4개 */
-    justify-content: center; /* 두 번째 줄도 자동 가운데 정렬 */
+    grid-template-columns: repeat(4, 80px);
+    justify-content: center; /* 두 번째 줄도 가운데 정렬 */
   }
 }
 
-@media (max-width: 768px) {
+/* ✅ 추가적으로 폭이 더 줄어도 4+3 유지 */
+@media (max-width: 900px) {
   .chart-container {
     grid-template-columns: repeat(4, 70px);
     gap: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .chart-container {
-    grid-template-columns: repeat(4, 60px);
-    gap: 12px;
+    justify-content: center;
   }
 }
 </style>
