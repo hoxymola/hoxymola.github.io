@@ -2,7 +2,6 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
-render_with_liquid: false
 ---
 
 ### 좋아해요 🙂
@@ -20,7 +19,7 @@ render_with_liquid: false
 ### 여기까지 했어요 😎
 
 ```markdown
-![현재 진행 배지](assets/class/c2g.svg){: .badge-img }
+[![현재 진행 배지](assets/class/c2g.svg){: .width="180" }](https://solved.ac/class)
 ```
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
