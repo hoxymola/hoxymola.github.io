@@ -67,43 +67,40 @@ order: 4
 
 <style>
 .progress-wrap{
-  display:flex;
-  flex-direction: column;
-  align-items:center;
-  gap:20px;
-  margin-top:24px;
+  display:flex; flex-direction:column; align-items:center;
+  gap:20px; margin-top:24px;
 }
 
-.badge-box{ position: relative; z-index: 3; }
+.badge-box{
+  position: relative;
+  isolation: isolate;
+  z-index: 10;
+}
 .badge-box a{ display:inline-block; }
 .badge-box img{
   width:180px; height:auto; display:block;
-  pointer-events:auto; cursor:pointer;
+  pointer-events:auto !important; cursor:pointer;
 }
 
 .charts{
   border:1px solid var(--text-color);
   border-radius:16px;
   padding:16px 18px;
-  position: relative; z-index: 1;   /* 배지보다 아래 레이어 */
+  position: relative;
+  z-index: 0; 
+  overflow: visible;
 }
 
 .chart-container{
   --item-w: 92px;
   --gap: 20px;
-  display:flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
+  display: grid;
   justify-content: center;
-  align-items: center;
-  box-sizing: content-box;
-  width: calc((var(--item-w) * 7) + (var(--gap) * 6));
-  max-width: 100%;
-  margin: 0 auto;
+  gap: var(--gap);
+  grid-template-columns: repeat(7, var(--item-w));
 }
 
 .chart-item{
-  flex: 0 0 var(--item-w);
   width: var(--item-w);
   text-align:center;
   position:relative;
@@ -111,11 +108,10 @@ order: 4
   border-radius:12px;
 }
 
-.circular-chart {
-  display: block;
-  margin: auto;
-  max-width: 80px;
-  transition: transform 0.15s ease;
+.circular-chart{ 
+  display:block; margin:auto;
+  max-width: calc(var(--item-w) - 12px);
+  transition: transform .15s ease;
 }
 
 .circular-chart:hover {
@@ -193,30 +189,26 @@ order: 4
   font-weight: bold;
 }
 
-/* 4열 구간 */
-@media (max-width: 1200px){
-  .chart-container{
-    width: calc((var(--item-w) * 4) + (var(--gap) * 3));  /* 정확히 4칸 폭 */
-  }
+@media (max-width: 1100px){
+  .chart-container{ grid-template-columns: repeat(4, var(--item-w)); }
 }
 
-/* 3열 구간 */
-@media (max-width: 768px){
-  .chart-container{
-    --gap: 16px;  /* 원하면 간격만 살짝 축소 */
-    width: calc((var(--item-w) * 3) + (var(--gap) * 2));  /* 정확히 3칸 폭 */
-  }
-  .circular-chart{ max-width: 70px; }
+/* 더 좁으면 4열 유지 + 사이즈 축소(간격도 조금만 줄임) */
+@media (max-width: 860px){
+  .chart-container{ --item-w: 84px; --gap: 16px; grid-template-columns: repeat(4, var(--item-w)); }
   .chart-title{ font-size: 12px; }
 }
 
-/* 더 작은 모바일 */
-@media (max-width: 480px){
-  .chart-container{
-    --gap: 12px;
-    width: calc((var(--item-w) * 3) + (var(--gap) * 2));
-  }
-  .circular-chart{ max-width: 60px; }
+/* 더더 좁아도 계속 4열 유지 (필요시 수치만 조절) */
+@media (max-width: 720px){
+  .chart-container{ --item-w: 76px; --gap: 14px; grid-template-columns: repeat(4, var(--item-w)); }
+  .circular-chart{ max-width: calc(var(--item-w) - 10px); }
+}
+
+/* 아주 작은 폭에서도 4열 유지(최소 사이즈) */
+@media (max-width: 600px){
+  .chart-container{ --item-w: 70px; --gap: 12px; grid-template-columns: repeat(4, var(--item-w)); }
+  .circular-chart{ max-width: calc(var(--item-w) - 8px); }
   .chart-title{ font-size: 11px; }
 }
 </style>
