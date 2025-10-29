@@ -17,6 +17,12 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
+<span class="achievement-wrapper">
+  <a href="https://solved.ac/class" class="achievement-icon" target="_blank">
+    <img src="https://static.solved.ac/class/c2g.svg" />
+  </a>
+</span>
+
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,10,0,0,0,0" | split: "," %}
 {% assign total_list = "16,22,40,47,48,48,48" | split: "," %}
@@ -58,6 +64,24 @@ order: 4
 </div>
 
 <style>
+.achievement-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.achievement-icon img {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.achievement-icon:hover img {
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
 .chart-container {
   display: flex;
   flex-wrap: wrap;
