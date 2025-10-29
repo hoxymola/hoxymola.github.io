@@ -66,6 +66,7 @@ order: 4
   display: block !important;
   text-align: center !important;
   margin: 0 auto !important;
+  width: 120px;
 }
 
 .chart-wrapper {
