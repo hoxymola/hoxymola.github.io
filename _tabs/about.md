@@ -17,11 +17,11 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
-<span class="achievement-wrapper">
+<div class="achievement-inline">
   <a href="https://solved.ac/class" class="achievement-icon" target="_blank">
     <img src="https://static.solved.ac/class/c2g.svg" alt="class 2"/>
   </a>
-</span>
+</div>
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,10,0,0,0,0" | split: "," %}
@@ -64,10 +64,10 @@ order: 4
 </div>
 
 <style>
-.achievement-wrapper {
+.achievement-inline {
   display: inline-flex;
   align-items: center;
-  gap: 0.3em;
+  margin-left: 0.5em;
 }
 
 .achievement-icon img {
