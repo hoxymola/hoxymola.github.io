@@ -2,6 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+render_with_liquid: false
 ---
 
 ### 좋아해요 🙂
