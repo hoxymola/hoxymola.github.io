@@ -206,23 +206,27 @@ order: 4
   .chart-title { font-size: 11px; }
 }
 
-/* ✅ 배지(아이콘) 크기를 chart-item 크기에 맞추기 */
 .img-link img {
-  width: 120px;        /* 기본 chart-item 크기와 동일 */
+  width: 120px;
   height: auto;
-  transition: width 0.3s ease; /* 부드럽게 반응 */
+  transition: all 0.25s ease;
+  cursor: pointer;
 }
 
-/* chart-item이 줄어드는 구간에 맞춰 함께 줄이기 */
+.img-link:hover img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
 @media (max-width: 900px) {
   .img-link img {
-    width: 105px; /* chart-item 크기 70px */
+    width: 105px;
   }
 }
 
 @media (max-width: 480px) {
   .img-link img {
-    width: 90px; /* chart-item 크기 60px */
+    width: 90px;
   }
 }
 </style>
