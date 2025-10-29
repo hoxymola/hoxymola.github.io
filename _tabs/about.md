@@ -2,6 +2,10 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+kramdown:
+  auto_ids: true
+  parse_block_html: true
+  enable_coderay: false
 ---
 
 ### 좋아해요 🙂
@@ -17,12 +21,12 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
-
 <span class="achievement-inline">
   <a href="https://solved.ac/class" class="achievement-icon" target="_blank">
-    <img src="https://hoxymola.github.io/assets/class/c2g.svg" alt="class 2"/>
+    <img src="https://hoxymola.github.io/assets/class/c2g.svg" alt="class 2" loading="lazy"/>
   </a>
 </span>
+
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,10,0,0,0,0" | split: "," %}
