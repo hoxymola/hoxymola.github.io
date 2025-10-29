@@ -2,10 +2,6 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
-kramdown:
-  auto_ids: true
-  parse_block_html: true
-  enable_coderay: false
 ---
 
 ### 좋아해요 🙂
@@ -20,13 +16,12 @@ kramdown:
 🏖️ 여름 🚶 뚜벅뚜벅\
 <br>
 
-### 여기까지 했어요 😎
-<span class="achievement-inline">
+<div class="achievement-section">
+  <span class="achievement-text">여기까지 했어요 😎</span>
   <a href="https://solved.ac/class" class="achievement-icon" target="_blank">
-    <img src="https://hoxymola.github.io/assets/class/c2g.svg" alt="class 2" loading="lazy"/>
+    <img src="https://hoxymola.github.io/assets/class/c2g.svg" alt="class 2"/>
   </a>
-</span>
-
+</div>
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,10,0,0,0,0" | split: "," %}
@@ -69,15 +64,22 @@ kramdown:
 </div>
 
 <style>
-.achievement-inline {
+.achievement-section {
   display: inline-flex;
   align-items: center;
-  margin-left: 0.5em;
+  gap: 0.4em;
+  margin-top: 1em;
+  font-size: 1.36rem;
+}
+
+.achievement-text {
+  font-weight: bold;
+  font-size: 1.36rem;
 }
 
 .achievement-icon img {
-  width: 1.2em;
-  height: 1.2em;
+  width: 1.36rem;
+  height: 1.36rem;
   vertical-align: middle;
   transition: transform 0.2s ease;
 }
