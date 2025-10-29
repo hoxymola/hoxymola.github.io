@@ -17,20 +17,19 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
-{% assign badge_url = "https://static.solved.ac/class/c2g.svg" %}
+{%- assign badge_url = "https://static.solved.ac/class/c2g.svg" -%}
 
-{% assign classes = "1,2,3,4,5,6,7" | split: "," %}
-{% assign solved_list = "16,22,11,0,0,0,0" | split: "," %}
-{% assign total_list = "16,22,40,47,48,48,48" | split: "," %}
-{% assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," %}
-{% assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," %}
+{%- assign classes = "1,2,3,4,5,6,7" | split: "," -%}
+{%- assign solved_list = "16,22,11,0,0,0,0" | split: "," -%}
+{%- assign total_list = "16,22,40,47,48,48,48" | split: "," -%}
+{%- assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," -%}
+{%- assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," -%}
 
 <div class="progress-wrapper">
-  <!-- 배지 -->
-  <div class="badge-box">
-    <img src="{{ badge_url }}" alt="현재 진행 배지"
-         class="progress-badge"
-         loading="lazy" decoding="async" referrerpolicy="no-referrer">
+
+  <!-- 배지: 마크다운 이미지 + 링크 (kramdown) -->
+  <div class="badge-box" markdown="1">
+[![현재 진행 배지]({{ badge_url }})](https://solved.ac/class){:.progress-badge}
   </div>
 
   <!-- 차트들 -->
@@ -56,65 +55,69 @@ order: 4
             </svg>
           <div class="chart-title">CLASS {{ classes[i] }}</div>
         </div>
-
       {% endfor %}
     </div>
   </div>
 </div>
 
 <style>
-/* ---- 공통 토큰 ---- */
-:root { --chart-size: 80px; }
-@media (max-width: 600px) { :root { --chart-size: 70px; } }
-@media (max-width: 400px) { :root { --chart-size: 60px; } }
+/* ===== 토큰 ===== */
+:root { --chart-size: 80px; --gap-x: 20px; --gap-y: 18px; }
+@media (max-width: 600px) { :root { --chart-size: 70px; --gap-x: 16px; --gap-y: 16px; } }
+@media (max-width: 400px) { :root { --chart-size: 60px; --gap-x: 14px; --gap-y: 14px; } }
 
-/* ---- 래퍼(보더/코너/클리핑) ---- */
+/* ===== 래퍼 (테두리/클리핑) ===== */
 .progress-wrapper{
   display:flex; align-items:center; gap:28px;
   padding:20px 22px;
-  border:1px solid var(--text-color); border-radius:14px;
-  overflow:hidden; /* 보더 넘침 방지 */
-  box-sizing:border-box;
+  border:1px solid #e5e7eb; border-radius:14px;
+  background:var(--card-bg,transparent);
+  overflow:hidden; box-sizing:border-box;
 }
+@media (prefers-color-scheme: dark){ .progress-wrapper{ border-color:#3a3f45; } }
 
-/* ---- 배지 ---- */
+/* ===== 배지 ===== */
 .badge-box{ flex:0 0 auto; display:flex; align-items:center; justify-content:center; }
 .progress-badge{
-  max-width:180px; height:auto; display:block;
+  display:inline-block;
+  max-width:180px; height:auto;
+  line-height:0; /* 주변 여백 제거 */
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.06));
 }
 
-/* ---- 차트 영역 ---- */
+/* ===== 차트 컨테이너 ===== */
 .charts-box{ flex:1 1 auto; }
 
-/* 기본: 넓은 화면에서는 가로 1줄(넘치면 자동으로 2단 그리드로 전환됨) */
+/* (넓은 화면) 1줄: 가로로 가운데 정렬 */
 .chart-container{
-  display:flex; flex-wrap:nowrap; justify-content:center; gap:20px;
+  display:flex; flex-wrap:nowrap; justify-content:center; align-items:flex-start;
+  gap: var(--gap-y) var(--gap-x);
 }
 
-/* 넘치기 시작하는 구간부터는 Grid로 바꿔 중앙 정렬 + 균일한 여백 */
+/* (중간 화면) 4칸×2줄, 줄 전체를 가운데 정렬
+   - 컨테이너 폭을 '정확히 4칸 + 3개 간격'으로 고정해 wrap이 4개에서 줄바꿈됨 */
 @media (max-width: 1200px){
   .progress-wrapper{ flex-direction:column; gap:18px; }
   .chart-container{
-    display:grid;
-    grid-template-columns: repeat(4, minmax(var(--chart-size), 1fr)); /* 4칸 */
-    justify-content:center;            /* 전체 그리드 중앙 정렬 */
-    place-items:center;                /* 아이템 중앙 정렬 */
-    column-gap:20px; row-gap:24px;     /* 가로/세로 간격 고정 */
-    width:100%;
+    flex-wrap: wrap;
+    justify-content: center;      /* 각 줄 중앙 정렬 */
+    align-content: center;        /* 전체 블록도 중앙으로 */
+    gap: var(--gap-y) var(--gap-x);
+    width: calc( (var(--chart-size) * 4) + (var(--gap-x) * 3) );
+    max-width: 100%;
+    margin: 0 auto;
   }
 }
 
-/* 더 좁으면 3칸 그리드 */
+/* (작은 화면) 3칸×2~3줄, 줄 중앙 정렬 */
 @media (max-width: 700px){
   .progress-badge{ max-width:160px; }
   .chart-container{
-    grid-template-columns: repeat(3, minmax(var(--chart-size), 1fr)); /* 3칸 */
-    column-gap:16px; row-gap:22px;
+    width: calc( (var(--chart-size) * 3) + (var(--gap-x) * 2) );
   }
 }
 
-/* ---- 차트 아이템/스타일 ---- */
+/* ===== 차트 아이템 ===== */
 .chart-item{ text-align:center; width:var(--chart-size); position:relative; }
 .circular-chart{ display:block; margin:auto; max-width:var(--chart-size); transition:transform .15s ease; }
 .circular-chart:hover{ animation:bounceScale .6s cubic-bezier(.28,.84,.42,1.2) forwards; }
@@ -143,9 +146,4 @@ order: 4
 }
 .ratio{ opacity:0; }
 .chart-title{ margin-top:4px; font-size:14px; font-weight:bold; }
-
-/* (옵션) 각 차트에 미세 테두리 주고 싶다면 주석 해제
-.chart-item{ border:1px solid rgba(0,0,0,.06); border-radius:10px; padding:8px 6px; }
-@media (prefers-color-scheme: dark){ .chart-item{ border-color:rgba(255,255,255,.12); } }
-*/
 </style>
