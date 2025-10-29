@@ -18,4 +18,4 @@ order: 4
 
 ### 여기까지 했어요 😎
 
-[![현재 진행 배지](https://static.solved.ac/class/c2g.svg)](https://solved.ac/class)
+[![현재 진행 배지](https://static.solved.ac/class/c2g.svg){: width="300" }](https://solved.ac/class)
