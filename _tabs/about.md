@@ -26,53 +26,88 @@ order: 4
 {% assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," %}
 {% assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," %}
 
-<div class="chart-container">
-  {% for i in (0..6) %}
-    {% assign solved = solved_list[i] | plus: 0 %}
-    {% assign total = total_list[i] | plus: 0 %}
-    {% assign percent = solved | times: 100 | divided_by: total %}
-    <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+<div class="progress-wrap">
+  <div class="badge-box">
+    <a href="https://solved.ac/class">
+      <img src="/assets/class/c2g.svg" alt="현재 진행 배지" width="180"/>
+    </a>
+  </div>
 
-      {% if solved > 0 %}
-        <svg viewBox="0 0 36 36" class="circular-chart clickable" onclick="location.href='/categories/class-{{ classes[i] }}'">
-      {% else %}
-        <svg viewBox="0 0 36 36" class="circular-chart">
-      {% endif %}
-
-          <path class="circle-bg"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
-          <path class="circle"
-                stroke-dasharray="{{ percent | round: 1 }}, 100"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"/>
-          <text x="18" y="18" class="percentage">
-            {{ percent | round: 1 }}%
-          </text>
-          <text x="18" y="18" class="ratio">
-            {{ solved }}/{{ total }}
-          </text>
-        </svg>
-      <div class="chart-title">CLASS {{ classes[i] }}</div>
+  <div class="charts">
+    <div class="chart-container">
+      {% for i in (0..6) %}
+        {% assign solved = solved_list[i] | plus: 0 %}
+        {% assign total = total_list[i] | plus: 0 %}
+        {% assign percent = solved | times: 100 | divided_by: total %}
+        <div class="chart-item" style="--chart-color: {{ colors[i] }}; --chart-hover-color: {{ hover_colors[i] }}; --percent: {{ percent }}">
+          {% if solved > 0 %}
+            <svg viewBox="0 0 36 36" class="circular-chart clickable" onclick="location.href='/categories/class-{{ classes[i] }}'">
+          {% else %}
+            <svg viewBox="0 0 36 36" class="circular-chart">
+          {% endif %}
+              <path class="circle-bg"
+                    d="M18 2.0845
+                       a 15.9155 15.9155 0 0 1 0 31.831
+                       a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="circle"
+                    stroke-dasharray="{{ percent | round: 1 }}, 100"
+                    d="M18 2.0845
+                       a 15.9155 15.9155 0 0 1 0 31.831
+                       a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="18" class="percentage">
+                {{ percent | round: 1 }}%
+              </text>
+              <text x="18" y="18" class="ratio">
+                {{ solved }}/{{ total }}
+              </text>
+            </svg>
+          <div class="chart-title">CLASS {{ classes[i] }}</div>
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
+  </div>
 </div>
 
 <style>
-.chart-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
+/* ---- 레이아웃 래퍼: 배지(좌) + 차트(우) ---- */
+.progress-wrap{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  margin-top: 24px;
 }
 
-.chart-item {
-  text-align: center;
-  width: 80px;
-  position: relative;
+/* 큰 화면: 배지는 왼쪽 고정 */
+.badge-box img{
+  width: 180px;
+  height:auto;
+  display:block;
+}
+
+/* 차트 박스에 외곽선 추가 */
+.charts{
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  padding:16px 18px;
+}
+
+/* ---- 차트 컨테이너 ---- */
+/* 데스크톱: 한 줄(가로 스크롤 없이 배치되면 그대로 1줄, 좁아져서 못 들어가면 아래 미디어쿼리에서 분기) */
+.chart-container{
+  display:grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  gap:20px;
+  align-items: center;
+}
+
+.chart-item{
+  text-align:center;
+  width: 92px;
+  position:relative;
+  padding:10px 6px;
+  border-radius:12px;
+  background: var(--card-bg, #fff);
 }
 
 .circular-chart {
@@ -157,16 +192,34 @@ order: 4
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .chart-item { width: 70px; }
-  .circular-chart { max-width: 70px; }
-  .chart-title { font-size: 12px; }
+/* ---- 반응형 분기 ---- */
+/* 중간 화면(~1200px): 배지가 위로, 차트는 4열 그리드 + 가운데 정렬 */
+@media (max-width: 1200px){
+  .progress-wrap{ flex-direction: column; align-items: center; }
+  .chart-container{
+    grid-auto-flow: row;                /* 열 흐름 해제하고 표준 그리드로 */
+    grid-template-columns: repeat(4, auto); /* 4개씩 */
+    justify-content: center;            /* 줄 단위 가운데 정렬 */
+  }
 }
 
-@media (max-width: 480px) {
-  .chart-container { gap: 12px; }
-  .chart-item { width: 60px; }
-  .circular-chart { max-width: 60px; }
-  .chart-title { font-size: 11px; }
+/* 모바일(~768px): 3열 그리드 + 가운데 정렬 */
+@media (max-width: 768px){
+  .chart-container{
+    grid-template-columns: repeat(3, auto); /* 3개씩 */
+    justify-content: center;
+    gap:16px;
+  }
+  .chart-item{ width: 88px; }
+  .circular-chart{ max-width: 70px; }
+  .chart-title{ font-size: 12px; }
+}
+
+/* 더 작은 모바일(~480px): 간격/사이즈 살짝 축소 */
+@media (max-width: 480px){
+  .chart-container{ gap:12px; }
+  .chart-item{ width: 80px; padding:8px 6px; }
+  .circular-chart{ max-width: 60px; }
+  .chart-title{ font-size: 11px; }
 }
 </style>
