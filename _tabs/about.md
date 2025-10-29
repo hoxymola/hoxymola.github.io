@@ -95,18 +95,13 @@ order: 4
   --item-w: 92px;
   --gap: 20px;
   display: grid;
-  justify-content: center;
+  grid-template-columns: repeat(7, var(--item-w)); /* 기본: 7개 한 줄 */
   gap: var(--gap);
-  grid-template-columns: repeat(7, var(--item-w));
+  justify-content: center;   /* 마지막 줄 포함 항상 가운데 */
 }
 
-.chart-item{
-  width: var(--item-w);
-  text-align:center;
-  position:relative;
-  padding:10px 6px;
-  border-radius:12px;
-}
+/* 카드 폭 고정 → 줄이 나뉘어도 간격 유지 */
+.chart-item{ width: var(--item-w); padding:10px 6px; border-radius:12px; text-align:center; }
 
 .circular-chart{ 
   display:block; margin:auto;
@@ -189,26 +184,47 @@ order: 4
   font-weight: bold;
 }
 
-@media (max-width: 1100px){
-  .chart-container{ grid-template-columns: repeat(4, var(--item-w)); }
+/* 더 일찍 2줄(4+3)로 전환 — 값은 환경 따라 미세조정 가능 */
+@media (max-width: 1280px){
+  .chart-container{
+    grid-template-columns: repeat(4, var(--item-w)); /* 4열 고정 */
+  }
 }
 
-/* 더 좁으면 4열 유지 + 사이즈 축소(간격도 조금만 줄임) */
-@media (max-width: 860px){
-  .chart-container{ --item-w: 84px; --gap: 16px; grid-template-columns: repeat(4, var(--item-w)); }
+/* 더 좁아져도 3열 금지 — 아이템/간격만 줄여서 계속 4열 유지 */
+@media (max-width: 900px){
+  .chart-container{ --item-w: 84px; --gap:16px; grid-template-columns: repeat(4, var(--item-w)); }
+  .circular-chart{ max-width: calc(var(--item-w) - 10px); }
   .chart-title{ font-size: 12px; }
 }
-
-/* 더더 좁아도 계속 4열 유지 (필요시 수치만 조절) */
-@media (max-width: 720px){
-  .chart-container{ --item-w: 76px; --gap: 14px; grid-template-columns: repeat(4, var(--item-w)); }
-  .circular-chart{ max-width: calc(var(--item-w) - 10px); }
+@media (max-width: 760px){
+  .chart-container{ --item-w: 76px; --gap:14px; grid-template-columns: repeat(4, var(--item-w)); }
 }
-
-/* 아주 작은 폭에서도 4열 유지(최소 사이즈) */
-@media (max-width: 600px){
-  .chart-container{ --item-w: 70px; --gap: 12px; grid-template-columns: repeat(4, var(--item-w)); }
+@media (max-width: 640px){
+  .chart-container{ --item-w: 70px; --gap:12px; grid-template-columns: repeat(4, var(--item-w)); }
   .circular-chart{ max-width: calc(var(--item-w) - 8px); }
   .chart-title{ font-size: 11px; }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const badgeLink = document.querySelector('.badge-box a[href="https://solved.ac/class"]');
+  const img = badgeLink?.querySelector('img');
+
+  if (!img || !badgeLink) return;
+
+  // 1) 테마가 붙인 이미지 팝업 래퍼를 발견하면 제거(unwrap)하고 다시 우리가 원하는 <a> 안에 넣기
+  const popupWrapper = img.closest('a.img-link');
+  if (popupWrapper && popupWrapper !== badgeLink) {
+    popupWrapper.replaceWith(img);      // 감싼 <a.img-link> 제거
+    badgeLink.appendChild(img);         // 원래 배지 링크로 복구
+  }
+
+  // 2) 혹시 스크립트가 다시 건드리지 않도록, 식별용 속성 부여(무해)
+  img.setAttribute('data-no-image-popup', 'true');
+
+  // 3) 클릭 시 이벤트 전파로 간섭 방지
+  badgeLink.addEventListener('click', (e) => { e.stopPropagation(); });
+});
+</script>
