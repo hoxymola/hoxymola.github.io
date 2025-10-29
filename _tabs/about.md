@@ -63,9 +63,9 @@ order: 4
 
 <style>
 .img-link {
-  display: block !important;
-  text-align: center !important;
-  margin: 0 auto !important;
+  display: inline-block !important;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .chart-wrapper {
@@ -173,23 +173,21 @@ order: 4
   font-weight: bold;
 }
 
-/* 4) 브레이크포인트: 2줄(4+3)로 전환 — Flex + 고정 최대폭 = 정확히 4개/줄 */
 @media (max-width: 1200px) {
   .chart-container {
-    display: flex;                 /* Grid → Flex로 변경 */
-    flex-wrap: wrap;               /* 줄바꿈 */
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;       /* 각 줄과 마지막 줄 모두 가운데 */
-    max-width: calc((80px * 4) + (20px * 3)); /* 4칸 폭 + 3개의 gap = 정확히 4개/줄 */
-    margin: 10px auto 0;           /* 컨테이너 자체를 가운데 */
+    justify-content: center;
+    max-width: calc((80px * 4) + (20px * 3));
+    margin: 10px auto 0;
   }
 }
 
-/* 더 좁아져도 4+3 유지: 아이템/간격만 살짝 축소 */
 @media (max-width: 900px) {
   .chart-container {
     gap: 16px;
-    max-width: calc((70px * 4) + (16px * 3)); /* 축소된 4칸 폭 */
+    max-width: calc((70px * 4) + (16px * 3));
   }
   .chart-item { width: 70px; }
   .circular-chart { max-width: 70px; }
@@ -209,11 +207,12 @@ order: 4
 .img-link img {
   width: 120px;
   height: auto;
-  transition: all 0.25s ease;
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
   cursor: pointer;
 }
 
-.img-link:hover img {
+.img-link img:hover {
   transform: scale(1.08);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
 }
