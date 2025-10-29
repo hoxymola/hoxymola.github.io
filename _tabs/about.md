@@ -17,9 +17,6 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
-
-[![현재 진행 배지](/assets/class/c2g.svg){: width="180" }](https://solved.ac/class)
-
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,11,0,0,0,0" | split: "," %}
 {% assign total_list = "16,22,40,47,48,48,48" | split: "," %}
@@ -69,36 +66,32 @@ order: 4
 </div>
 
 <style>
-/* ---- 레이아웃 래퍼: 배지(좌) + 차트(우) ---- */
 .progress-wrap{
   display:flex;
+  flex-direction: column;
   align-items:center;
-  gap:28px;
-  margin-top: 24px;
+  gap:20px;
+  margin-top:24px;
 }
 
-/* 큰 화면: 배지는 왼쪽 고정 */
 .badge-box img{
-  width: 180px;
+  width:180px;
   height:auto;
   display:block;
 }
 
-/* 차트 박스에 외곽선 추가 */
 .charts{
-  border:1px solid rgba(0,0,0,.08);
+  border:1px solid var(--text-color);
   border-radius:16px;
   padding:16px 18px;
 }
 
-/* ---- 차트 컨테이너 ---- */
-/* 데스크톱: 한 줄(가로 스크롤 없이 배치되면 그대로 1줄, 좁아져서 못 들어가면 아래 미디어쿼리에서 분기) */
 .chart-container{
-  display:grid;
-  grid-auto-flow: column;
-  grid-auto-columns: auto;
+  display:flex;
+  flex-wrap: nowrap; 
   gap:20px;
-  align-items: center;
+  justify-content: center;
+  align-items:center;
 }
 
 .chart-item{
@@ -107,7 +100,6 @@ order: 4
   position:relative;
   padding:10px 6px;
   border-radius:12px;
-  background: var(--card-bg, #fff);
 }
 
 .circular-chart {
@@ -192,33 +184,36 @@ order: 4
   font-weight: bold;
 }
 
-/* ---- 반응형 분기 ---- */
-/* 중간 화면(~1200px): 배지가 위로, 차트는 4열 그리드 + 가운데 정렬 */
 @media (max-width: 1200px){
-  .progress-wrap{ flex-direction: column; align-items: center; }
   .chart-container{
-    grid-auto-flow: row;                /* 열 흐름 해제하고 표준 그리드로 */
-    grid-template-columns: repeat(4, auto); /* 4개씩 */
-    justify-content: center;            /* 줄 단위 가운데 정렬 */
+    flex-wrap: wrap;     
+    justify-content: center;       
+  }
+  .chart-item{
+    flex: 0 0 calc(25% - 20px);  
+    max-width: 130px;        
   }
 }
 
-/* 모바일(~768px): 3열 그리드 + 가운데 정렬 */
 @media (max-width: 768px){
   .chart-container{
-    grid-template-columns: repeat(3, auto); /* 3개씩 */
-    justify-content: center;
     gap:16px;
   }
-  .chart-item{ width: 88px; }
+  .chart-item{
+    flex: 0 0 calc(33.333% - 16px); 
+    max-width: 120px;
+    width: auto;        
+  }
   .circular-chart{ max-width: 70px; }
   .chart-title{ font-size: 12px; }
 }
 
-/* 더 작은 모바일(~480px): 간격/사이즈 살짝 축소 */
 @media (max-width: 480px){
   .chart-container{ gap:12px; }
-  .chart-item{ width: 80px; padding:8px 6px; }
+  .chart-item{
+    flex: 0 0 calc(33.333% - 12px);  
+    max-width: 110px;
+  }
   .circular-chart{ max-width: 60px; }
   .chart-title{ font-size: 11px; }
 }
