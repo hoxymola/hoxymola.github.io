@@ -173,20 +173,36 @@ order: 4
   font-weight: bold;
 }
 
-/* ✅ 화면이 줄어들면 2줄(4+3)로 전환 */
+/* 4) 브레이크포인트: 2줄(4+3)로 전환 — Flex + 고정 최대폭 = 정확히 4개/줄 */
 @media (max-width: 1200px) {
   .chart-container {
-    grid-template-columns: repeat(4, 80px);
-    justify-content: center; /* 두 번째 줄도 가운데 정렬 */
+    display: flex;                 /* Grid → Flex로 변경 */
+    flex-wrap: wrap;               /* 줄바꿈 */
+    gap: 20px;
+    justify-content: center;       /* 각 줄과 마지막 줄 모두 가운데 */
+    max-width: calc((80px * 4) + (20px * 3)); /* 4칸 폭 + 3개의 gap = 정확히 4개/줄 */
+    margin: 10px auto 0;           /* 컨테이너 자체를 가운데 */
   }
 }
 
-/* ✅ 추가적으로 폭이 더 줄어도 4+3 유지 */
+/* 더 좁아져도 4+3 유지: 아이템/간격만 살짝 축소 */
 @media (max-width: 900px) {
   .chart-container {
-    grid-template-columns: repeat(4, 70px);
     gap: 16px;
-    justify-content: center;
+    max-width: calc((70px * 4) + (16px * 3)); /* 축소된 4칸 폭 */
   }
+  .chart-item { width: 70px; }
+  .circular-chart { max-width: 70px; }
+  .chart-title { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .chart-container {
+    gap: 12px;
+    max-width: calc((60px * 4) + (12px * 3));
+  }
+  .chart-item { width: 60px; }
+  .circular-chart { max-width: 60px; }
+  .chart-title { font-size: 11px; }
 }
 </style>
