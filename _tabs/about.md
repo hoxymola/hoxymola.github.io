@@ -17,16 +17,11 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
-
-```markdown
-[![현재 진행 배지](https://static.solved.ac/class/c2g.svg){: .badge-img }](https://solved.ac/class)
-```
-
-{%- assign classes = "1,2,3,4,5,6,7" | split: "," -%}
-{%- assign solved_list = "16,22,11,0,0,0,0" | split: "," -%}
-{%- assign total_list = "16,22,40,47,48,48,48" | split: "," -%}
-{%- assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," -%}
-{%- assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," -%}
+{% assign classes = "1,2,3,4,5,6,7" | split: "," %}
+{% assign solved_list = "16,22,11,0,0,0,0" | split: "," %}
+{% assign total_list = "16,22,40,47,48,48,48" | split: "," %}
+{% assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," %}
+{% assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," %}
 
 <div class="chart-container">
   {% for i in (0..6) %}
@@ -59,96 +54,54 @@ order: 4
         </svg>
       <div class="chart-title">CLASS {{ classes[i] }}</div>
     </div>
-  {% endfor %}
+{% endfor %}
 </div>
 
 <style>
-/* ===== 변수 (크기/간격) ===== */
-:root { --chart-size: 80px; --gap-x: 20px; --gap-y: 18px; }
-@media (max-width: 700px){ :root { --chart-size: 70px; --gap-x: 16px; --gap-y: 16px; } }
-@media (max-width: 400px){ :root { --chart-size: 60px; --gap-x: 14px; --gap-y: 14px; } }
-
-/* ===== 배지 (마크다운 이미지에 붙이는 클래스) ===== */
-.badge-img{
-  display:block;
-  margin: 0 auto 14px;    /* 가운데 정렬 + 아래 여백 */
-  width:180px;
-  height:auto;
-  line-height:0;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.06));
-}
-
-/* ===== 컨테이너 (보더/라운드/정렬/랩핑) ===== */
 .chart-container {
   display: flex;
-  flex-wrap: nowrap;              /* 넓은 화면: 1줄(7개) */
-  justify-content: center;        /* 가운데 정렬 */
-  align-items: flex-start;
-  gap: var(--gap-y) var(--gap-x); /* row-gap / column-gap */
-  padding: 20px 22px;
-  margin-top: 10px;
-
-  /* 스크린샷처럼 전체 테두리 */
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  box-sizing: border-box;
-  overflow: hidden;               /* 테두리 밖으로 튀는 효과 방지 */
-}
-@media (prefers-color-scheme: dark){
-  .chart-container { border-color: #3a3f45; }
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
 }
 
-/* ===== 중간 화면: 4개 × 2줄 (가운데 정렬) ===== */
-@media (max-width: 1200px){
-  .chart-container{
-    flex-wrap: wrap;
-    width: calc( (var(--chart-size) * 4) + (var(--gap-x) * 3) ); /* 4칸 고정폭 */
-    max-width: 100%;
-    margin-left: auto; margin-right: auto;
-    justify-content: center;      /* 각 줄 중앙 */
-    align-content: center;        /* 전체 블록 중앙 */
-  }
-}
-
-/* ===== 작은 화면: 3개 × 2~3줄 (가운데 정렬) ===== */
-@media (max-width: 700px){
-  .chart-container{
-    width: calc( (var(--chart-size) * 3) + (var(--gap-x) * 2) ); /* 3칸 고정폭 */
-  }
-}
-
-/* ===== 아이템 & 차트 ===== */
 .chart-item {
   text-align: center;
-  width: var(--chart-size);
+  width: 80px;
   position: relative;
-
-  /* (선택) 각 아이템에 미세 보더를 주고 싶다면 주석 해제
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 10px;
-  padding: 8px 6px;
-  }
-  @media (prefers-color-scheme: dark){
-    .chart-item { border-color: rgba(255,255,255,.12); }
-  }
-  */
 }
 
 .circular-chart {
   display: block;
   margin: auto;
-  max-width: var(--chart-size);
+  max-width: 80px;
   transition: transform 0.15s ease;
 }
+
 .circular-chart:hover {
   animation: bounceScale 0.6s cubic-bezier(.28,.84,.42,1.2) forwards;
 }
-.circular-chart.clickable { cursor: pointer; }
-.circular-chart.clickable:active { transform: scale(0.95); }
 
-.circular-chart:hover .circle { stroke: var(--chart-hover-color); }
-.circular-chart:hover .percentage { opacity: 0; }
-.circular-chart:hover .ratio { opacity: 1; }
+.circular-chart.clickable {
+  cursor: pointer;
+}
+
+.circular-chart.clickable:active {
+  transform: scale(0.95);
+}
+
+.circular-chart:hover .circle {
+  stroke: var(--chart-hover-color);
+}
+
+.circular-chart:hover .percentage {
+  opacity: 0;
+}
+
+.circular-chart:hover .ratio {
+  opacity: 1;
+}
 
 @keyframes bounceScale {
   0%   { transform: scale(1); }
@@ -177,7 +130,7 @@ order: 4
 
 @keyframes fillCircle {
   from { stroke-dasharray: 0, 100; }
-  to   { stroke-dasharray: var(--percent), 100; }
+  to { stroke-dasharray: var(--percent), 100; }
 }
 
 .percentage,
@@ -190,7 +143,10 @@ order: 4
   transition: opacity 0.3s ease;
   fill: var(--text-color);
 }
-.ratio { opacity: 0; }
+
+.ratio {
+  opacity: 0;
+}
 
 .chart-title {
   margin-top: 4px;
@@ -198,8 +154,16 @@ order: 4
   font-weight: bold;
 }
 
-/* 기존의 아주 작은 화면 보정은 그대로 유지해도 OK */
+@media (max-width: 768px) {
+  .chart-item { width: 70px; }
+  .circular-chart { max-width: 70px; }
+  .chart-title { font-size: 12px; }
+}
+
 @media (max-width: 480px) {
+  .chart-container { gap: 12px; }
+  .chart-item { width: 60px; }
+  .circular-chart { max-width: 60px; }
   .chart-title { font-size: 11px; }
 }
 </style>
