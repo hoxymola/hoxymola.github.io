@@ -66,7 +66,6 @@ order: 4
   display: block !important;
   text-align: center !important;
   margin: 0 auto !important;
-  width: 120px;
 }
 
 .chart-wrapper {
@@ -205,5 +204,25 @@ order: 4
   .chart-item { width: 60px; }
   .circular-chart { max-width: 60px; }
   .chart-title { font-size: 11px; }
+}
+
+/* ✅ 배지(아이콘) 크기를 chart-item 크기에 맞추기 */
+.img-link img {
+  width: 120px;        /* 기본 chart-item 크기와 동일 */
+  height: auto;
+  transition: width 0.3s ease; /* 부드럽게 반응 */
+}
+
+/* chart-item이 줄어드는 구간에 맞춰 함께 줄이기 */
+@media (max-width: 900px) {
+  .img-link img {
+    width: 105px; /* chart-item 크기 70px */
+  }
+}
+
+@media (max-width: 480px) {
+  .img-link img {
+    width: 90px; /* chart-item 크기 60px */
+  }
 }
 </style>
