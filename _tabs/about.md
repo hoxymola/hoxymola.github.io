@@ -74,17 +74,18 @@ order: 4
   margin-top:24px;
 }
 
-.badge-box{ position: relative; z-index: 2; }
-.badge-box a{ display: inline-block; }
+.badge-box{ position: relative; z-index: 3; }
+.badge-box a{ display:inline-block; }
 .badge-box img{
-  pointer-events: auto;
-  cursor: pointer;
+  width:180px; height:auto; display:block;
+  pointer-events:auto; cursor:pointer;
 }
 
 .charts{
   border:1px solid var(--text-color);
   border-radius:16px;
   padding:16px 18px;
+  position: relative; z-index: 1;   /* 배지보다 아래 레이어 */
 }
 
 .chart-container{
@@ -94,7 +95,11 @@ order: 4
   flex-wrap: wrap;
   gap: var(--gap);
   justify-content: center;
-  align-items:center;
+  align-items: center;
+  box-sizing: content-box;
+  width: calc((var(--item-w) * 7) + (var(--gap) * 6));
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .chart-item{
@@ -188,30 +193,29 @@ order: 4
   font-weight: bold;
 }
 
-@media (min-width: 1201px){
-  .chart-container{
-    max-width: none;
-  }
-}
-
+/* 4열 구간 */
 @media (max-width: 1200px){
   .chart-container{
-    max-width: calc((var(--item-w) * 4) + (var(--gap) * 3));
-    margin: 0 auto;
+    width: calc((var(--item-w) * 4) + (var(--gap) * 3));  /* 정확히 4칸 폭 */
   }
 }
 
+/* 3열 구간 */
 @media (max-width: 768px){
   .chart-container{
-    max-width: calc((var(--item-w) * 3) + (var(--gap) * 2));
-    gap: 16px;
+    --gap: 16px;  /* 원하면 간격만 살짝 축소 */
+    width: calc((var(--item-w) * 3) + (var(--gap) * 2));  /* 정확히 3칸 폭 */
   }
   .circular-chart{ max-width: 70px; }
   .chart-title{ font-size: 12px; }
 }
 
+/* 더 작은 모바일 */
 @media (max-width: 480px){
-  .chart-container{ gap: 12px; }
+  .chart-container{
+    --gap: 12px;
+    width: calc((var(--item-w) * 3) + (var(--gap) * 2));
+  }
   .circular-chart{ max-width: 60px; }
   .chart-title{ font-size: 11px; }
 }
