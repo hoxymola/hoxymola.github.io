@@ -62,10 +62,10 @@ order: 4
 </div>
 
 <style>
-.badge-wrap {
-  display: block;
-  width: 120px;
-  margin: 20px auto 0;
+.img-link {
+  display: block !important;
+  text-align: center !important;
+  margin: 0 auto !important;
 }
 
 .chart-wrapper {
