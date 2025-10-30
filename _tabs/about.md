@@ -16,7 +16,7 @@ order: 4
 🏖️ 여름 🚶 뚜벅뚜벅\
 <br>
 
-### 여기까지 했어요 😎 [![현재 진행 배지](/assets/class/c2g.svg)](https://solved.ac/class)
+### 여기까지 했어요 [![현재 진행 배지](/assets/class/c2g.svg)](https://solved.ac/class)
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,12,0,0,0,0" | split: "," %}
@@ -61,6 +61,10 @@ order: 4
 </div>
 
 <style>
+.me-2 {
+  display: inline-flex;
+}
+
 .chart-wrapper {
   border: 1px solid var(--text-color);
   border-radius: 16px;
@@ -204,6 +208,7 @@ order: 4
   height: auto;
   transition: all 0.25s ease;
   cursor: pointer;
+  margin-left: 0.3rem;
 }
 
 .img-link:hover img {
