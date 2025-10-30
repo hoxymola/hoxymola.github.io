@@ -62,6 +62,13 @@
           {%- capture url -%}
             https://acmicpc.net/user/{{ site.boj.username }}
           {%- endcapture -%}
+        {% when 'codeforces' %}
+          {%- unless site.codeforces.profile -%}
+            {%- continue -%}
+          {%- endunless -%}
+          {%- capture url -%}
+            https://codeforces.com/profile/{{ site.codeforces.profile }}
+          {%- endcapture -%}
         {% when 'steam' %}
           {%- unless site.steam.profile -%}
             {%- continue -%}
@@ -76,10 +83,6 @@
           {%- capture url -%}
             https://github.com/{{ site.github.username }}
           {%- endcapture -%}
-        {% when 'rss' %}
-          {% assign url = '/feed.xml' | relative_url %}
-        {% else %}
-          {% assign url = entry.url %}
       {% endcase %}
 
       {% if url %}

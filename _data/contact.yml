@@ -3,16 +3,19 @@
 - type: boj
   icon: "fas fa-code"
 
+- type: codeforces
+  icon: "fas fa-chart-simple"
+
 - type: steam
   icon: "fab fa-steam"
 
 - type: github
   icon: "fab fa-github"
 
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
 # Uncomment and complete the url below to enable more contact options
+# - type: rss
+#   icon: "fas fa-rss"
+#   noblank: true
 #
 # - type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
