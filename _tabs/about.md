@@ -63,6 +63,7 @@ order: 4
 <style>
 .me-2 {
   display: inline-flex;
+  align-items: center;
 }
 
 .chart-wrapper {
@@ -204,11 +205,11 @@ order: 4
 }
 
 .img-link img {
-  width: 1.36rem;
+  width: 1.8rem;
   height: auto;
   transition: all 0.25s ease;
   cursor: pointer;
-  margin-left: 0.3rem;
+  margin-left: 0.2rem;
 }
 
 .img-link:hover img {
