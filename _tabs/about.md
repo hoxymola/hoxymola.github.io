@@ -17,7 +17,7 @@ order: 4
 <br>
 
 ### 여기까지 했어요 😎
-[![현재 진행 배지](/assets/class/c2g.svg){: .badge-wrap }](https://solved.ac/class)
+[![현재 진행 배지](/assets/class/c2g.svg)](https://solved.ac/class)
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,11,0,0,0,0" | split: "," %}
@@ -62,12 +62,6 @@ order: 4
 </div>
 
 <style>
-.img-link {
-  display: block !important;
-  text-align: center !important;
-  margin: 0 auto !important;
-}
-
 .chart-wrapper {
   border: 1px solid var(--text-color);
   border-radius: 16px;
@@ -207,7 +201,7 @@ order: 4
 }
 
 .img-link img {
-  width: 120px;
+  width: 30px;
   height: auto;
   transition: all 0.25s ease;
   cursor: pointer;
@@ -216,17 +210,5 @@ order: 4
 .img-link:hover img {
   transform: scale(1.08);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
-}
-
-@media (max-width: 900px) {
-  .img-link img {
-    width: 105px;
-  }
-}
-
-@media (max-width: 480px) {
-  .img-link img {
-    width: 90px;
-  }
 }
 </style>
