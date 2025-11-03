@@ -1,7 +1,7 @@
-  <!-- 관련 포스트 설정 -->
+<!-- 관련 포스트 설정 -->
 {% assign TOTAL_SIZE = 3 %}
-{% assign TAG_SCORE = 1 %}
-{% assign CATEGORY_SCORE = 0.5 %}
+{% assign TAG_SCORE = 10 %}
+{% assign CATEGORY_SCORE = 1 %}
 {% assign SEPARATOR = ':' %}
 
 <!-- 무시할 공통 태그/카테고리 -->
@@ -10,28 +10,25 @@
 
 {% assign match_posts = '' | split: '' %}
 
-<!-- 후보군 생성: 카테고리 -->
+<!-- 후보군 생성: 카테고리 (필터링 적용) -->
 {% for category in page.categories %}
   {% unless IGNORE_CATEGORIES contains category %}
-    {% assign match_posts = match_posts | push: site.categories[category] | uniq %}
+    {% assign match_posts = match_posts | concat: site.categories[category] %}
   {% endunless %}
 {% endfor %}
 
-<!-- 후보군 생성: 태그 -->
+<!-- 후보군 생성: 태그 (필터링 적용) -->
 {% for tag in page.tags %}
   {% unless IGNORE_TAGS contains tag %}
-    {% assign match_posts = match_posts | push: site.tags[tag] | uniq %}
+    {% assign match_posts = match_posts | concat: site.tags[tag] %}
   {% endunless %}
 {% endfor %}
 
-{% assign match_posts = match_posts | reverse %}
-{% assign last_index = match_posts.size | minus: 1 %}
+{% assign match_posts = match_posts | uniq %}
 {% assign score_list = '' | split: '' %}
 
 <!-- 점수 계산 -->
-{% for i in (0..last_index) %}
-  {% assign post = match_posts[i] %}
-
+{% for post in match_posts %}
   {% if post.url == page.url %}
     {% continue %}
   {% endif %}
@@ -53,26 +50,21 @@
   {% endfor %}
 
   {% if score > 0 %}
-    {% capture score_item %}{{ score }}{{ SEPARATOR }}{{ i }}{% endcapture %}
+    {% capture score_item %}{{ score }}{{ SEPARATOR }}{{ post.url }}{% endcapture %}
     {% assign score_list = score_list | push: score_item %}
   {% endif %}
 {% endfor %}
 
 <!-- 상위 TOTAL_SIZE 개 선택 -->
-{% assign index_list = '' | split: '' %}
+{% assign relate_posts = '' | split: '' %}
 {% if score_list.size > 0 %}
   {% assign score_list = score_list | sort | reverse %}
   {% for entry in score_list limit: TOTAL_SIZE %}
-    {% assign index = entry | split: SEPARATOR | last %}
-    {% assign index_list = index_list | push: index %}
+    {% assign url = entry | split: SEPARATOR | last %}
+    {% assign p = site.posts | where: "url", url | first %}
+    {% assign relate_posts = relate_posts | push: p %}
   {% endfor %}
 {% endif %}
-
-{% assign relate_posts = '' | split: '' %}
-{% for index in index_list %}
-  {% assign i = index | to_integer %}
-  {% assign relate_posts = relate_posts | push: match_posts[i] %}
-{% endfor %}
 
 <!-- HTML 렌더링 -->
 {% if relate_posts.size > 0 %}
