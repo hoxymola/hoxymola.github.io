@@ -2,7 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
-description: "저는요.."
+description: "🐶 강쥐와 🎮 게임을 좋아하는 개발자입니다."
 ---
 
 ### 좋아해요 🙂
