@@ -19,11 +19,7 @@
 {% endfor %}
 
 {% for category in filtered_categories %}
-  {% for post in site.categories[category] %}
-    {% unless post.url == page.url %}
-      {% assign match_posts = match_posts | push: post %}
-    {% endunless %}
-  {% endfor %}
+  {% assign match_posts = match_posts | push: site.categories[category] | uniq %}
 {% endfor %}
 
 <!-- 후보군 생성: 태그 (필터링 적용) -->
@@ -35,20 +31,21 @@
 {% endfor %}
 
 {% for tag in filtered_tags %}
-  {% for post in site.tags[tag] %}
-    {% unless post.url == page.url %}
-      {% assign match_posts = match_posts | push: post %}
-    {% endunless %}
-  {% endfor %}
+  {% assign match_posts = match_posts | push: site.tags[tag] | uniq %}
 {% endfor %}
 
-<!-- 중복 제거 -->
-{% assign match_posts = match_posts | uniq %}
-
+{% assign match_posts = match_posts | reverse %}
+{% assign last_index = match_posts.size | minus: 1 %}
 {% assign score_list = '' | split: '' %}
 
 <!-- 점수 계산 -->
-{% for post in match_posts %}
+{% for i in (0..last_index) %}
+  {% assign post = match_posts[i] %}
+
+  {% if post.url == page.url %}
+    {% continue %}
+  {% endif %}
+
   {% assign score = 0 %}
 
   <!-- 태그 점수 -->
@@ -66,7 +63,7 @@
   {% endfor %}
 
   {% if score > 0 %}
-    {% capture score_item %}{{ score }}{{ SEPARATOR }}{{ post.url }}{% endcapture %}
+    {% capture score_item %}{{ score }}{{ SEPARATOR }}{{ i }}{% endcapture %}
     {% assign score_list = score_list | push: score_item %}
   {% endif %}
 {% endfor %}
@@ -76,15 +73,15 @@
 {% if score_list.size > 0 %}
   {% assign score_list = score_list | sort | reverse %}
   {% for entry in score_list limit: TOTAL_SIZE %}
-    {% assign url = entry | split: SEPARATOR | last %}
-    {% assign index_list = index_list | push: url %}
+    {% assign index = entry | split: SEPARATOR | last %}
+    {% assign index_list = index_list | push: index %}
   {% endfor %}
 {% endif %}
 
 {% assign relate_posts = '' | split: '' %}
-{% for url in index_list %}
-  {% assign post = site.posts | where: "url", url | first %}
-  {% assign relate_posts = relate_posts | push: post %}
+{% for index in index_list %}
+  {% assign i = index | to_integer %}
+  {% assign relate_posts = relate_posts | push: match_posts[i] %}
 {% endfor %}
 
 <!-- HTML 렌더링 -->
