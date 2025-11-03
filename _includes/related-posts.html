@@ -58,7 +58,7 @@
     {% endif %}
   {% endfor %}
 
-  {% if score > 0 %}
+  {% if score > 1 %}
     {% capture score_item %}{{ score }}{{ SEPARATOR }}{{ i }}{% endcapture %}
     {% assign score_list = score_list | push: score_item %}
   {% endif %}
