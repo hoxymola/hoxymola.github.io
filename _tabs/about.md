@@ -2,7 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
-description: "강쥐와 게임을 좋아하는 하프스택 개발자입니다."
+description: "강쥐와 게임을 좋아하는 허접 개발자입니다."
 ---
 
 ### 좋아해요 🙂
