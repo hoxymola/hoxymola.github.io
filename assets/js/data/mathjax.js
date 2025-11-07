@@ -8,6 +8,10 @@ layout: compress
 {%- endcomment -%}
 
 MathJax = {
+  chtml: {
+    displayAlign: 'left',
+    displayIndent: '2em'
+  },
   tex: {
     {%- comment -%} start/end delimiter pairs for in-line math {%- endcomment -%}
     inlineMath: [
@@ -20,8 +24,6 @@ MathJax = {
       ['\\[', '\\]']
     ],
     {%- comment -%} equation numbering {%- endcomment -%}
-    tags: 'ams',
-    displayAlign: "left",
-    displayIndent: "2em"
+    tags: 'ams'
   }
 };
