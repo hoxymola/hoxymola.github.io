@@ -350,9 +350,8 @@ main {
 
 /* Overwrite bootstrap outline button */
 .btn.btn-outline-primary {
-  font-weight: bold;
   &:not(.disabled):hover {
-    border-color: rgb(223, 223, 241, 0.64) !important;
+    border-color: #007bff !important;
   }
 }
 
