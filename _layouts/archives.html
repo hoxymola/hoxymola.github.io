@@ -26,7 +26,7 @@ layout: page
       <span class="date day" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
         {{ post.date | date: df_strftime_m }}
       </span>
-      <span class="date month day text-muted" data-ts="{{ ts }}" data-df="DD">
+      <span class="date month day text-muted" data-ts="{{ ts }}" data-df="[/ ]DD">
         / {{ post.date | date: '%d' }}
       </span>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
