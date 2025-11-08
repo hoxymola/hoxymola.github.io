@@ -487,7 +487,16 @@ header {
   }
 }
 
-h2,
+h2 {
+  font-weight: bold;
+  border-bottom: 1px solid var(--main-border-color);
+  padding-bottom: 0.5em;
+  margin-bottom: 0.1em;
+  @include bp.xl {
+    scroll-margin-top: 2rem;
+  }
+}
+
 h3,
 h4 {
   @include bp.xl {
