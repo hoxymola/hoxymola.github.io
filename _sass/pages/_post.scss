@@ -162,8 +162,8 @@ header {
     }
 
     &:hover {
-      &::before {
-        opacity: 0.3;
+      &:not(.disabled)::before {
+        color: whitesmoke;
       }
     }
 
@@ -185,8 +185,6 @@ header {
       font-size: 0.65rem;
       text-transform: uppercase;
       content: attr(aria-label);
-      background-color: var(--card-hover-bg);
-      opacity: 0;
     }
 
     &:first-child {
