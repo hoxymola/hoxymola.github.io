@@ -17,7 +17,7 @@ description: "강쥐와 게임을 좋아하는 허접 개발자입니다."
 🏖️ 여름 🚶 뚜벅뚜벅\
 <br>
 
-### 여기까지 했어요 [![현재 진행 배지](/assets/class/c3.svg)](https://solved.ac/class)
+### 여기까지 했어요 [![현재 진행 배지](/assets/class/c3.svg)](https://solved.ac/class?class=3)
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
 {% assign solved_list = "16,22,21,0,0,0,0" | split: "," %}
