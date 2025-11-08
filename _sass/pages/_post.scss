@@ -497,7 +497,13 @@ h2 {
   }
 }
 
-h3,
+h2 {
+  font-weight: 500;
+  @include bp.xl {
+    scroll-margin-top: 2rem;
+  }
+}
+
 h4 {
   @include bp.xl {
     scroll-margin-top: 2rem;
