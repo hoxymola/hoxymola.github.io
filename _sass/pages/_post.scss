@@ -185,8 +185,8 @@ header {
       font-size: 0.65rem;
       text-transform: uppercase;
       content: attr(aria-label);
-      background-color: var(--card-hover-bg);
-      opacity: 0;
+      background-color: var(--card-hover-bg) ç;
+      opacity: 0 !important;
     }
 
     &:first-child {
