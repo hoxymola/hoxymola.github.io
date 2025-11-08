@@ -158,7 +158,7 @@ header {
     @extend %-btn-post-nav;
 
     &:not(:hover) {
-      color: var(--link-color);
+      color: var(--heading-color);
     }
 
     &:hover {
