@@ -157,7 +157,15 @@ header {
   .btn {
     @extend %-btn-post-nav;
 
-    color: var(--heading-color);
+    &:not(:hover) {
+      color: var(--heading-color);
+    }
+
+    &:hover {
+      &:not(.disabled)::before {
+        color: whitesmoke;
+      }
+    }
 
     &.disabled {
       @extend %-btn-post-nav;
