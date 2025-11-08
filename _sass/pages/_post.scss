@@ -159,12 +159,13 @@ header {
 
     &:not(:hover) {
       color: var(--heading-color) !important;
-      background-color: var(--main-border-color) !important;
-      opacity: 0 !important;
-
     }
 
     &:hover {
+      &:not(.disabled)::before {
+        color: whitesmoke;
+      }
+      background-color: var(--main-border-color) !important;
       opacity: 0.3 !important;
     }
 
