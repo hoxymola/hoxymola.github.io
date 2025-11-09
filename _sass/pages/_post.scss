@@ -162,10 +162,7 @@ header {
     }
 
     &:hover {
-      &:not(.disabled)::before {
-        color: whitesmoke;
-      }
-      background-color: var(--main-border-color) !important;
+      background-color: var(--card-hover-bg) !important;
       opacity: 0.3 !important;
     }
 
