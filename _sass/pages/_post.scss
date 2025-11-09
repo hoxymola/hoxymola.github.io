@@ -154,38 +154,45 @@ header {
     @include mx.ml-mr(-0.5rem);
   }
 
-  .btn {
+  .btn,
+  .btn:where(.btn-outline-primary) {
     @extend %-btn-post-nav;
 
-    &:not(:hover) {
-      color: var(--heading-color);
-    }
+    background-color: var(--card-bg) !important;
+    color: var(--heading-color) !important;
 
-    &:hover {
-      &:not(.disabled)::before {
-        color: whitesmoke;
-      }
-      background-color: var(--main-border-color) !important;
-    }
-
-    &.disabled {
-      @extend %-btn-post-nav;
-
-      pointer-events: auto;
-      cursor: not-allowed;
-      background: none;
-      color: gray;
-    }
-
-    &.btn-outline-primary.disabled:focus {
-      box-shadow: none;
-    }
-
+    /* 위에서 들어가는 보조 라벨 */
     &::before {
       color: var(--text-muted-color);
       font-size: 0.65rem;
       text-transform: uppercase;
       content: attr(aria-label);
+    }
+
+    &:hover:not(.disabled) {
+      background-color: var(--card-hover-bg) !important;
+      color: var(--heading-color) !important;
+      opacity: 0.3;
+
+      &::before {
+        color: var(--heading-color);
+      }
+    }
+
+    &:hover:not(.disabled)::before {
+      color: var(--heading-color) !important;
+    }
+
+    &.disabled {
+      @extend %-btn-post-nav;
+      pointer-events: auto;
+      cursor: not-allowed;
+      background: none;
+      color: gray;
+
+      &::before {
+        color: var(--text-muted-color) !important;
+      }
     }
 
     &:first-child {
@@ -206,6 +213,7 @@ header {
     white-space: normal;
   }
 } /* .post-navigation */
+
 
 @media (hover: hover) {
   .post-navigation {
