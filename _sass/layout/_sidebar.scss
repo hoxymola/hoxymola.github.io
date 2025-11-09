@@ -18,8 +18,8 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   width: v.$sidebar-width;
   border-right: 1px solid var(--sidebar-border-color);
   background-size: cover;
-  background: var(--sidebar-background);
-  background-color: #D3D6E7;
+  background: var(--sidebar-background) no-repeat center bottom;
+  background-color: var(--sidebar-background-color);
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
