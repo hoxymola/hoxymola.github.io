@@ -161,14 +161,14 @@ header {
     overflow: hidden;
     background-color: var(--nav-bg) !important;
     color: var(--nav-text-1) !important;
-    transition: background-color .35s ease-in-out, color .35s ease-in-out;
+    transition: all .35s ease-in-out;
 
     &::before {
       content: attr(aria-label);
       font-size: 0.65rem;
       text-transform: uppercase;
       color: var(--text-muted-color);
-      transition: color .35s ease-in-out;
+      transition: all .35s ease-in-out;
     }
 
     &:hover:not(.disabled) {
