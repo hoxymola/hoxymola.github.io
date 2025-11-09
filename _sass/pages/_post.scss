@@ -159,9 +159,11 @@ header {
 
     &:not(:hover) {
       color: var(--heading-color) !important;
+      background-color: var(--card-bg);
     }
 
     &:hover {
+      color: var(--heading-color) !important;
       background-color: var(--card-hover-bg) !important;
       opacity: 0.3 !important;
     }
