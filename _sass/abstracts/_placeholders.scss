@@ -17,9 +17,10 @@
 %tag-hover {
   @extend %link-color;
 
-  background: var(--tag-hover);
-  border-color: var(--tag-hover);
-  transition: background 0.35s ease-in-out;
+  background-color: var(--nav-bg-hover) !important;
+  color: var(--nav-text-2-hover) !important;
+  transition: all 0.3s ease-in;
+  border-color: var(--nav-bg-hover) !important;
 }
 
 %table-cell {
