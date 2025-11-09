@@ -42,8 +42,12 @@
     border-radius: 0.8rem;
     padding: 0.3rem 0.5rem;
     margin: 0 0.35rem 0.5rem 0;
+    background-color: var(--nav-bg) !important;
+    color: var(--nav-text-2) !important;
 
     &:hover {
+      background-color: var(--nav-bg-hover) !important;
+      color: var(--nav-text-2-hover) !important;
       transition: all 0.3s ease-in;
     }
   }
