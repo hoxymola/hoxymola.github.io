@@ -157,10 +157,8 @@ header {
   .btn {
     @extend %-btn-post-nav;
 
-    &:not(:hover) {
-      color: var(--heading-color) !important;
-      background-color: var(--card-bg);
-    }
+    background-color: var(--card-bg) !important;
+    color: var(--heading-color) !important;
 
     &:hover {
       color: var(--heading-color) !important;
