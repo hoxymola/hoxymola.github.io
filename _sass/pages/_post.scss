@@ -157,13 +157,15 @@ header {
   .btn {
     @extend %-btn-post-nav;
 
-    background-color: var(--card-bg) !important;
-    color: var(--heading-color) !important;
+    &:not(:hover) {
+      color: var(--heading-color);
+    }
 
     &:hover {
-      color: var(--heading-color) !important;
-      background-color: var(--card-hover-bg) !important;
-      opacity: 0.3 !important;
+      &:not(.disabled)::before {
+        color: whitesmoke;
+        background-color: var(--main-border-color) !important;
+      }
     }
 
     &.disabled {
