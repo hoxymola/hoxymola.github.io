@@ -30,8 +30,8 @@
 }
 
 %link-hover {
-  color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
+  color: var(--nav-text-2-hover) !important;
+  border-bottom: 1px solid var(--nav-text-2-hover);
   text-decoration: none;
 }
 
