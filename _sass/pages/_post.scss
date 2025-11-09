@@ -158,56 +158,39 @@ header {
     @extend %-btn-post-nav;
 
     position: relative;
-    isolation: isolate;     // 독립 스택 (z-index 레이어링 안전)
-    overflow: hidden;       // 라운딩 밖으로 새지 않게
-    background-color: var(--card-bg) !important;
-    color: var(--heading-color) !important;
+    overflow: hidden;
+    background-color: var(--nav-bg) !important;
+    color: var(--nav-text-1) !important;
+    transition: background-color .35s ease-in-out, color .35s ease-in-out;
 
     &::before {
-      position: relative;
-      z-index: 1;
-      color: var(--text-muted-color);
+      content: attr(aria-label);
       font-size: 0.65rem;
       text-transform: uppercase;
-      content: attr(aria-label);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background-color: var(--card-hover-bg);
-      opacity: 0;
-      transition: opacity 0.35s ease-in-out;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    > * {
-      position: relative;
-      z-index: 1;
+      color: var(--text-muted-color);
+      transition: color .35s ease-in-out;
     }
 
     &:hover:not(.disabled) {
-      color: var(--heading-color) !important;
-      &::after { opacity: 0.3; }
-      &::before { color: var(--heading-color); }
-    }
+      background-color: var(--nav-bg-hover) !important;
+      color: var(--nav-text-1-hover) !important;
 
-    &:hover:not(.disabled)::before {
-      color: var(--heading-color) !important;
+      &::before {
+        color: var(--nav-text-2-hover);
+      }
     }
 
     &.disabled {
       @extend %-btn-post-nav;
+
       pointer-events: auto;
       cursor: not-allowed;
-      background: none !important;
-      color: gray !important;
+      background: none;
+      color: gray;
+    }
 
-      &::before { color: var(--text-muted-color) !important; }
-      &::after { opacity: 0; } // 오버레이 비활성
+    &.btn-outline-primary.disabled:focus {
+      box-shadow: none;
     }
 
     &:first-child {
