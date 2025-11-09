@@ -164,8 +164,8 @@ header {
     &:hover {
       &:not(.disabled)::before {
         color: whitesmoke;
-        background-color: var(--main-border-color) !important;
       }
+      background-color: var(--main-border-color) !important;
     }
 
     &.disabled {
