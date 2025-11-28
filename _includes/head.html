@@ -107,6 +107,16 @@
 
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://potato-cuisine.dev/",
+      "name": "감자요리",
+      "alternateName": "potato cuisine"
+    }
+  </script>
+
   {% include js-selector.html lang=lang %}
 
   {% if jekyll.environment == 'production' %}
