@@ -20,7 +20,7 @@ description: "강쥐와 게임을 좋아하는 허접 개발자입니다."
 ### 여기까지 했어요 [![현재 진행 배지](/assets/class/c3g.svg)](https://solved.ac/class?class=3)
 
 {% assign classes = "1,2,3,4,5,6,7" | split: "," %}
-{% assign solved_list = "16,22,40,13,0,0,0" | split: "," %}
+{% assign solved_list = "16,22,40,14,0,0,0" | split: "," %}
 {% assign total_list = "16,22,40,48,48,48,48" | split: "," %}
 {% assign colors = "#249CE5,#20C5DF,#1BDF8B,#2BD521,#B0DB15,#EBCA0F,#F3B312" | split: "," %}
 {% assign hover_colors = "#5AB4F5,#4DE1E7,#3CEB9D,#54F75D,#D2E635,#F3D425,#F7C73A" | split: "," %}
