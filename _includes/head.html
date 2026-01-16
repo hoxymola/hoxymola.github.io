@@ -8,6 +8,9 @@
     name="viewport"
     content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
+  {% if page.url contains '/tags/' or page.url contains '/categories/' or page.url contains '/page' %}
+  <meta name="robots" content="noindex,follow">
+  {% endif %}
 
   {%- capture seo_tags -%}
     {% seo title=false %}
