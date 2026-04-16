@@ -25,3 +25,9 @@ package-lock.json
 # Misc
 _sass/vendors
 assets/js/dist
+
+.omc
+.claude
+_bmad
+_bmad-output
+docs

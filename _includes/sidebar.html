@@ -37,6 +37,13 @@
         </li>
         <!-- .nav-item -->
       {% endfor %}
+      <!-- maeil -->
+      <li class="nav-item{% if page.url contains '/maeil' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/maeil/' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-graduation-cap"></i>
+          <span>STUDY</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
