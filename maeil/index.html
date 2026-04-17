@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <style>
     @media screen and (max-width: 768px) {
-      .sidebar-toggle { display: none !important; }
+      .sidebar-toggle {
+        opacity: 0;
+        pointer-events: none;
+      }
       #menu-fab {
         position: fixed;
         bottom: 32px;
@@ -34,6 +37,7 @@
 </head>
 <body>
   <div id="app"></div>
+  <button id="menu-fab">☰</button>
   <script>
     window.$docsify = {
       name: '매일 메일 📬',
@@ -46,10 +50,23 @@
         depth: 2
       },
       homepage: 'README.md',
-      auto2top: true
+      auto2top: true,
+      plugins: [
+        function(hook) {
+          hook.ready(function() {
+            var fab = document.getElementById('menu-fab');
+            var toggle = document.querySelector('.sidebar-toggle');
+            if (fab && toggle) {
+              fab.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggle.click();
+              });
+            }
+          });
+        }
+      ]
     }
   </script>
-  <button id="menu-fab" onclick="document.querySelector('.sidebar-toggle').click()">☰</button>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 </body>
