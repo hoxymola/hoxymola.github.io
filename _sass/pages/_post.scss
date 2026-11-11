@@ -531,6 +531,11 @@ h4 {
     text-align: left;
   }
 
+  /* 주제가 바뀌는 곳: 같은 주제 묶음(<br>)보다 넓게 띄움 */
+  .topic-gap {
+    height: 6rem;
+  }
+
   /* 이미지 링크(inline-flex)가 가운데 정렬 줄에서 오른쪽으로 밀리는 문제 보정 */
   a.popup {
     display: flex;
