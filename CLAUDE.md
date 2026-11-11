@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Jekyll-based static blog (using Chirpy theme 7.3.x) for documenting algorithm problem solutions from Baekjoon Online Judge (BOJ). Solutions are written in Kotlin and organized by solved.ac CLASS difficulty levels (1-7).
 
-- **Site URL**: https://potato-cuisine.dev
+- **Site URL**: https://hoxymola.github.io
 - **Repository**: hoxymola/hoxymola.github.io (GitHub Pages)
 
 ## Development Commands

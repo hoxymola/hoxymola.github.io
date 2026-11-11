@@ -1,3 +1,3 @@
 <div align="center">
-  <a href="https://potato-cuisine.dev/about">🐥</a>
+  <a href="https://hoxymola.github.io/about">🐥</a>
 </div>
