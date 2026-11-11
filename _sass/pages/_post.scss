@@ -530,4 +530,15 @@ h4 {
     display: inline-block;
     text-align: left;
   }
+
+  /* 이미지 링크(inline-flex)가 가운데 정렬 줄에서 오른쪽으로 밀리는 문제 보정 */
+  a.popup {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 }
