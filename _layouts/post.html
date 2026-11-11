@@ -113,7 +113,7 @@ script_includes:
     </dialog>
   {% endif %}
 
-  <div class="content">
+  <div class="content{% if page.categories contains '월간 회고' %} recap{% endif %}">
     {{ content }}
   </div>
 

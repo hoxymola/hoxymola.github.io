@@ -516,3 +516,18 @@ h4 {
     scroll-margin-top: 2rem;
   }
 }
+
+/* 월간 회고: 네이버 블로그 스타일 가운데 정렬 + 넉넉한 문단 간격 */
+.content.recap {
+  text-align: center;
+
+  p {
+    margin-bottom: 1.75rem;
+  }
+
+  ol,
+  ul {
+    display: inline-block;
+    text-align: left;
+  }
+}
